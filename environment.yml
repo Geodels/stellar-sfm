@@ -15,9 +15,11 @@ dependencies:
   - xarray        # N-d labeled array library
   - matplotlib    # 2D plotting library
   - numpy         # N-d array and numerics
+  - numpy-indexed # Numerics adds on
   - scipy         # Common math/stats/science functions
   - scikit-image  # Image processing routines
   - scikit-learn  # Machine learning library
+  - scikit-fuzzy  # Fuzzy logic library
   - geopandas     # Labeled array library for geosciences
   - shapely       # Geometric library
   - cftime        # Time units decoder
@@ -32,7 +34,22 @@ dependencies:
   - pymannkendall # Mann-Kendall trend analysis
   - seaborn       # Statistical visualizations
   - pyresample    # Geographic resampling tools
+  - petsc4py
+  - meshio
+  - vtk
+  - pre-commit
+  - ruamel.yaml
+  - mpi4py
+  - cython
+  - pyvista
+  - pooch
+  - ipywidgets
+  - itkwidgets
+  - nodejs
   - wget
   - pip:
     - pyproj      # Geographic projections
     - jupyter-book==0.10.1
+    - fastfunc
+    - meshplex
+    - gospl
