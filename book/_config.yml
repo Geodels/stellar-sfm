@@ -1,0 +1,68 @@
+#######################################################################################
+# Book settings
+title : STELLAR SFM
+author: Tristan Salles
+copyright: "2021-2024"  # Copyright year to be placed in the footer
+logo: '' #'_static/logo.png'
+
+# Launch button settings
+repository:
+  url                         : https://github.com/Geodels/stellar-sfm
+  path_to_book                : "book"
+  branch                      : master
+
+#######################################################################################
+# Execution settings
+execute:
+  execute_notebooks           : cache
+
+#######################################################################################
+# HTML-specific settings
+html:
+  favicon                     : '_static/favicon.ico'
+  home_page_in_navbar         : false
+  use_repository_button: true
+  use_issues_button: true
+  use_edit_page_button: true
+  extra_footer: |
+    <p>
+    <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+      <img align="right" class="margin" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by.svg" width="88px">
+    </a>
+    This Jupyter Book and all its content are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0) license</a>.
+    <br>
+    &copy; Copyright 2021-2024.
+    </p>
+
+# #######################################################################################
+# Interact link settings
+notebook_interface            : "notebook"
+
+launch_buttons:
+  notebook_interface: "jupyterlab"
+
+binder:
+  binderhub_url               : "https://mybinder.org"
+  text                        : "Launch binder"
+
+latex:
+  latex_engine                : "xelatex"
+  latex_documents:
+    targetname: book.tex
+
+execute:
+  execute_notebooks: auto
+  allow_errors: true
+
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    - html_admonition
+    - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    - substitution
