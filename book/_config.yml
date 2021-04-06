@@ -1,7 +1,7 @@
 #######################################################################################
 # Book settings
 title : STELLAR SFM
-author: Tristan Salles
+author: The STELLAR Project - SFM Team
 copyright: "2021-2024"  # Copyright year to be placed in the footer
 logo: '' #'_static/logo.png'
 
@@ -30,16 +30,14 @@ html:
       <img align="right" class="margin" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by.svg" width="88px">
     </a>
     This Jupyter Book and all its content are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0) license</a>.
-    <br>
-    &copy; Copyright 2021-2024.
     </p>
 
 # #######################################################################################
 # Interact link settings
-notebook_interface            : "notebook"
+notebook_interface            : "classic"
 
 launch_buttons:
-  notebook_interface: "jupyterlab"
+  notebook_interface: "classic"
 
 binder:
   binderhub_url               : "https://mybinder.org"
@@ -52,6 +50,7 @@ latex:
 
 execute:
   execute_notebooks: auto
+  timeout: 180
   allow_errors: true
 
 parse:

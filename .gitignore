@@ -1,3 +1,6 @@
 book/_static/.DS_Store
 book/.ipynb_checkpoints/book/_static/.DS_Store
 book/.ipynb_checkpoints/
+*.DS_Store
+book/_build
+book/GoM/.ipynb_checkpoints

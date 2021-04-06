@@ -1,2 +1,6 @@
 # - file: README
 - file: welcome
+
+- part: Gulf of Mexico
+  chapters:
+    - file: GoM/build_input

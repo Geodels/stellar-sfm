@@ -1,0 +1,46 @@
+name: Global model using present-day topography for the Gulf of Mexico
+
+domain:
+    npdata: 'gospl_data/mesh25km'
+    flowdir: 5
+    fast: False
+    backward: False
+    interp: 1
+    # npstrata: 'input0/sed0Ma'
+
+time:
+    start: 0.
+    end: 50000.
+    tout: 10000.
+    dt: 2500.
+    tec: 10000.
+    # strat: 20000.
+
+spl:
+    hfill: 10.
+    K: 3.0e-5
+    Ff: 0.2
+    d: 0.
+
+diffusion:
+    shelfslope: True
+    hillslopeKa: 1.
+    hillslopeKm: 10.
+    sedK: 250000.
+
+sea:
+    position: 0.
+
+climate:
+  - start: 0.
+    map: ['gospl_data/rain25km','r']
+
+# compaction:
+#     phis: 0.49
+#     phif: 0.63
+#     z0s: 3700.0
+#     z0f: 1960.0
+
+output:
+    dir: 'GOM2'
+    makedir: False

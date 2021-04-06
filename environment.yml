@@ -46,6 +46,19 @@ dependencies:
   - ipywidgets
   - itkwidgets
   - nodejs
+  - pyvista
+  - pyevtk
+  - panel
+  - gdown
+  - jigsawpy
+  - pysheds
+  - rioxarray
+  - raterio
+  - richdem
+  - holoviews
+  - geoviews
+  - hvplot
+  - panel
   - wget
   - pip:
     - pyproj      # Geographic projections
@@ -53,3 +66,4 @@ dependencies:
     - fastfunc
     - meshplex
     - gospl
+    - stripy
