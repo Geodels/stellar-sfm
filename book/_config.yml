@@ -1,7 +1,7 @@
 #######################################################################################
 # Book settings
 title : STELLAR SFM
-author: The STELLAR Project - SFM Team
+author: the EarthCoLab Group for the STELLAR Project - Program 3
 copyright: "2021-2024"  # Copyright year to be placed in the footer
 logo: '' #'_static/logo.png'
 
@@ -50,7 +50,7 @@ latex:
 
 execute:
   execute_notebooks: auto
-  timeout: 180
+  timeout: 300
   allow_errors: true
 
 parse:
