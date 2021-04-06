@@ -53,7 +53,8 @@ dependencies:
   - jigsawpy
   - pysheds
   - rioxarray
-  - raterio
+  - rasterio
+  - ipygany
   - richdem
   - holoviews
   - geoviews
