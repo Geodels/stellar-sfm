@@ -45,6 +45,8 @@
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -55,6 +57,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Define forcing parameters" href="GoM/build_input.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -82,7 +85,19 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Gulf of Mexico
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="GoM/build_input.html">
+   Define forcing parameters
+  </a>
+ </li>
+</ul>
+
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -164,7 +179,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/Geodels/stellar-sfm/master?urlpath=lab/tree/book/welcome.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Geodels/stellar-sfm/master?urlpath=tree/book/welcome.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -195,16 +210,18 @@
 <img alt="_images/USydney-logo.jpg" src="_images/USydney-logo.jpg" />
 </div>
 <div class="note admonition">
-<p class="admonition-title">Unit content</p>
-<p>For this component of the unit, we will use:</p>
+<p class="admonition-title">Content</p>
 <ol class="simple">
-<li><p>a <em>learning website</em> where you will find information relative to the lectures themselves: it contains some <strong>notes</strong>, <strong>videos</strong> and <strong>exercises</strong> for each week,</p></li>
-<li><p>a <em>web-based programming platform</em> based on <strong>Jupyter Notebook</strong> that contains the materials for the <strong>exercises</strong> and <strong>practicals</strong>.</p></li>
+<li><p>a <em>learning website</em> where you will find information relative to our experiments: it contains some <strong>notes</strong>, <strong>tutorials</strong> and <strong>examples</strong>,</p></li>
+<li><p>a <em>web-based programming platform</em> based on <strong>Jupyter Lab</strong> that contains the materials for running the <strong>examples</strong> and <strong>experiments</strong>.</p></li>
 </ol>
 </div>
-<blockquote>
-<div><p>This part of the course focuses on coastal systems analysis using both <strong>ocean data</strong> from a variety of sources (hindcast and forecast data, satellite observations, radar, moored buoys) &amp; <strong>numerical models</strong> of shoreline changes, wave dynamics and coral reef evolution.</p>
-</div></blockquote>
+<div class="figure align-default" id="figure-example1">
+<img alt="_images/example1.png" src="_images/example1.png" />
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Running <code class="docutils literal notranslate"><span class="pre">gospl</span></code> for the Gulf of Mexico with today forcing conditions (<em>i.e.</em> topography and precipitation).</span><a class="headerlink" href="#figure-example1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -232,6 +249,7 @@
         
         <div class='prev-next-bottom'>
             
+    <a class='right-next' id="next-link" href="GoM/build_input.html" title="next page">Define forcing parameters</a>
 
         </div>
         
@@ -241,7 +259,7 @@
     <div class="container">
       <p>
         
-          By Tristan Salles<br/>
+          By The STELLAR Project - SFM Team<br/>
         
             &copy; Copyright 2021-2024.<br/>
           <div class="extra_footer">
@@ -250,8 +268,6 @@
   <img align="right" class="margin" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by.svg" width="88px">
 </a>
 This Jupyter Book and all its content are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0) license</a>.
-<br>
-&copy; Copyright 2021-2024.
 </p>
 
           </div>
