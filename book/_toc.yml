@@ -1,10 +1,12 @@
 # - file: README
 - file: welcome
 
-- part: Gulf of Mexico
+- part: Example 1
   chapters:
+    - file: GoM/intro
     - file: GoM/build_input
     - file: GoM/run_model
-    - file: GoM/export_format
-    - file: GoM/river_catchment
-    - file: GoM/interactive_plots
+      sections:
+        - file: GoM/export_format
+        - file: GoM/river_catchment
+        - file: GoM/interactive_plots
