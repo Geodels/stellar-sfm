@@ -68,3 +68,4 @@ dependencies:
     - meshplex
     - gospl
     - stripy
+    - zmapio

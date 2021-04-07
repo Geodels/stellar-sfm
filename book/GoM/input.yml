@@ -35,5 +35,5 @@ climate:
 
 
 output:
-    dir: 'GoM_now'
+    dir: 'outGoM'
     makedir: False

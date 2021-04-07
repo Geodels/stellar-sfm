@@ -4,3 +4,4 @@
 - part: Gulf of Mexico
   chapters:
     - file: GoM/build_input
+    - file: GoM/run_model
