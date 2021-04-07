@@ -1,0 +1,1205 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Extract catchment characteristics &#8212; STELLAR SFM</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.c441f2ba0852f4cabcb80105e3a46ae6.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Exporting gospl outputs" href="export_format.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">STELLAR SFM</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Gulf of Mexico
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="build_input.html">
+   Define forcing parameters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="run_model.html">
+   Modelling landscape evolution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="export_format.html">
+   Exporting
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     gospl
+    </span>
+   </code>
+   outputs
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Extract catchment characteristics
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/GoM/river_catchment.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Geodels/stellar-sfm"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/Geodels/stellar-sfm/issues/new?title=Issue%20on%20page%20%2FGoM/river_catchment.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/Geodels/stellar-sfm/edit/master/book/GoM/river_catchment.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Geodels/stellar-sfm/master?urlpath=tree/book/GoM/river_catchment.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-required-libraries">
+   Loading required libraries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-a-netcdf-file">
+   Building a Netcdf file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualising-with-xarray">
+   Visualising with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     xarray
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-pysheds-library-for-watershed-delineation">
+   Using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pysheds
+    </span>
+   </code>
+   library for watershed delineation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-specific-outlets">
+   Extracting specific outlets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-corresponding-catchments">
+   Get corresponding catchments
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-river-networks">
+     Plotting river networks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#longitudinal-profiles">
+     Longitudinal profiles
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="extract-catchment-characteristics">
+<h1>Extract catchment characteristics<a class="headerlink" href="#extract-catchment-characteristics" title="Permalink to this headline">¶</a></h1>
+<p>We will see how to extract specific catchments from model outputs and their main rivers longitudinal profiles.</p>
+<div class="section" id="loading-required-libraries">
+<h2>Loading required libraries<a class="headerlink" href="#loading-required-libraries" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">script</span> <span class="kn">import</span> <span class="n">readOutput</span> <span class="k">as</span> <span class="n">rout</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">rioxarray</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">spatial</span>
+
+<span class="kn">from</span> <span class="nn">pysheds.grid</span> <span class="kn">import</span> <span class="n">Grid</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">make_interp_spline</span><span class="p">,</span> <span class="n">BSpline</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">label_size</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">label_size</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">label_size</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;svg&#39;
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="building-a-netcdf-file">
+<h2>Building a Netcdf file<a class="headerlink" href="#building-a-netcdf-file" title="Permalink to this headline">¶</a></h2>
+<p>As for many of the approach described in these examples, we start by building from our <code class="docutils literal notranslate"><span class="pre">gospl</span></code> outputs a <code class="docutils literal notranslate"><span class="pre">netcdf</span></code> file.</p>
+<p>As we saw previously, <code class="docutils literal notranslate"><span class="pre">netcdf</span></code> exports are done by using the <code class="docutils literal notranslate"><span class="pre">readOutput.py</span></code> script presented in the previous notebook. Here we export all the time steps at once by looping through the number of outputs (5 in this case).</p>
+<div class="note dropdown admonition">
+<p class="admonition-title">Arguments for <code class="docutils literal notranslate"><span class="pre">readOutput.py</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">readOutput.py</span></code> script main function requires several arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code>: the path to the input file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: the name of the input file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">step</span></code>: the step you wish to output (here set to 5 corresponding to the last output based on the input parameters: start time 0 year, end time 50 thousand years with an output every 10 thousand years)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nbstep</span></code>: the number of time steps to plot (useful if one want to output a <code class="docutils literal notranslate"><span class="pre">netdcf</span></code> file containing all time steps (done in the following section).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uplift_forcing</span></code>: set to False as we are not considering any tectonic forcing</p></li>
+</ul>
+</div>
+<p>Then the <code class="docutils literal notranslate"><span class="pre">buildLonLatMesh</span></code> function is used to interpolate (using a <code class="docutils literal notranslate"><span class="pre">kd-tree</span></code> approach) the <code class="docutils literal notranslate"><span class="pre">gospl</span></code> variables on a regular mesh. It also provides a way to limit the created <code class="docutils literal notranslate"><span class="pre">netcdf</span></code> file by defining a <code class="docutils literal notranslate"><span class="pre">bounding</span> <span class="pre">box</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uplift_forcing</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># Specifying the grid resolution in degrees</span>
+<span class="n">reso</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="c1"># Total number of outputs</span>
+<span class="n">nbstep</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># Bounding box</span>
+<span class="n">bb</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">134</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="o">-</span><span class="mi">46</span><span class="p">,</span><span class="mi">80</span><span class="p">]</span>
+
+<span class="c1"># Looping through the output time steps</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nbstep</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># Calling the initialisation function for our class </span>
+        <span class="n">ncgrid</span> <span class="o">=</span> <span class="n">rout</span><span class="o">.</span><span class="n">readOutput</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;./&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;input.yml&#39;</span><span class="p">,</span> 
+                                 <span class="n">step</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">nbstep</span><span class="o">=</span><span class="n">nbstep</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> 
+                                 <span class="n">uplift</span><span class="o">=</span><span class="n">uplift_forcing</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Update the variables after the first time steps</span>
+        <span class="n">ncgrid</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">step</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">uplift</span><span class="o">=</span><span class="n">uplift_forcing</span><span class="p">)</span>
+    
+    <span class="c1"># Build the regular grid defining the bounding box</span>
+    <span class="n">ncgrid</span><span class="o">.</span><span class="n">buildLonLatMesh</span><span class="p">(</span><span class="n">res</span><span class="o">=</span><span class="n">reso</span><span class="p">,</span> <span class="n">nghb</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">134</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="o">-</span><span class="mi">46</span><span class="p">,</span><span class="mi">80</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">533</span><span class="n">defedcf13</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>         <span class="c1"># Calling the initialisation function for our class</span>
+<span class="ne">---&gt; </span><span class="mi">16</span>         <span class="n">ncgrid</span> <span class="o">=</span> <span class="n">rout</span><span class="o">.</span><span class="n">readOutput</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;./&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;input.yml&#39;</span><span class="p">,</span> 
+<span class="g g-Whitespace">     </span><span class="mi">17</span>                                  <span class="n">step</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">nbstep</span><span class="o">=</span><span class="n">nbstep</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span>                                  <span class="n">uplift</span><span class="o">=</span><span class="n">uplift_forcing</span><span class="p">)</span>
+
+<span class="nn">~/work/stellar-sfm/stellar-sfm/book/GoM/script/readOutput.py</span> in <span class="ni">__init__</span><span class="nt">(self, path, filename, step, nbstep, back, uplift)</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span>         <span class="bp">self</span><span class="o">.</span><span class="n">nbCPUs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob1</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outputDir</span> <span class="o">+</span> <span class="s2">&quot;/h5/&quot;</span><span class="p">,</span> <span class="s2">&quot;topology.p*&quot;</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span> 
+<span class="ne">---&gt; </span><span class="mi">61</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_readElevationData</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span> 
+<span class="g g-Whitespace">     </span><span class="mi">63</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">nbstep</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">~/work/stellar-sfm/stellar-sfm/book/GoM/script/readOutput.py</span> in <span class="ni">_readElevationData</span><span class="nt">(self, step)</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span>     <span class="k">def</span> <span class="nf">_readElevationData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">592</span> 
+<span class="ne">--&gt; </span><span class="mi">593</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_getCoordinates</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">594</span> 
+<span class="g g-Whitespace">    </span><span class="mi">595</span>         <span class="k">return</span>
+
+<span class="nn">~/work/stellar-sfm/stellar-sfm/book/GoM/script/readOutput.py</span> in <span class="ni">_getCoordinates</span><span class="nt">(self, step)</span>
+<span class="g g-Whitespace">    </span><span class="mi">312</span> 
+<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nbCPUs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">314</span>             <span class="n">df</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/h5/topology.p</span><span class="si">%s</span><span class="s2">.h5&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outputDir</span><span class="p">,</span> <span class="n">k</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">315</span>             <span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;/coords&quot;</span><span class="p">]))</span>
+<span class="g g-Whitespace">    </span><span class="mi">316</span> 
+
+<span class="nn">/usr/share/miniconda/envs/stellar/lib/python3.8/site-packages/h5py/_hl/files.py</span> in <span class="ni">__init__</span><span class="nt">(self, name, mode, driver, libver, userblock_size, swmr, rdcc_nslots, rdcc_nbytes, rdcc_w0, track_order, fs_strategy, fs_persist, fs_threshold, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">422</span>             <span class="k">with</span> <span class="n">phil</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">423</span>                 <span class="n">fapl</span> <span class="o">=</span> <span class="n">make_fapl</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="n">libver</span><span class="p">,</span> <span class="n">rdcc_nslots</span><span class="p">,</span> <span class="n">rdcc_nbytes</span><span class="p">,</span> <span class="n">rdcc_w0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">424</span>                 <span class="n">fid</span> <span class="o">=</span> <span class="n">make_fid</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">userblock_size</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">425</span>                                <span class="n">fapl</span><span class="p">,</span> <span class="n">fcpl</span><span class="o">=</span><span class="n">make_fcpl</span><span class="p">(</span><span class="n">track_order</span><span class="o">=</span><span class="n">track_order</span><span class="p">,</span> <span class="n">fs_strategy</span><span class="o">=</span><span class="n">fs_strategy</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">426</span>                                <span class="n">fs_persist</span><span class="o">=</span><span class="n">fs_persist</span><span class="p">,</span> <span class="n">fs_threshold</span><span class="o">=</span><span class="n">fs_threshold</span><span class="p">),</span>
+
+<span class="nn">/usr/share/miniconda/envs/stellar/lib/python3.8/site-packages/h5py/_hl/files.py</span> in <span class="ni">make_fid</span><span class="nt">(name, mode, userblock_size, fapl, fcpl, swmr)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span>         <span class="k">if</span> <span class="n">swmr</span> <span class="ow">and</span> <span class="n">swmr_support</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span>             <span class="n">flags</span> <span class="o">|=</span> <span class="n">h5f</span><span class="o">.</span><span class="n">ACC_SWMR_READ</span>
+<span class="ne">--&gt; </span><span class="mi">190</span>         <span class="n">fid</span> <span class="o">=</span> <span class="n">h5f</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">fapl</span><span class="o">=</span><span class="n">fapl</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">191</span>     <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;r+&#39;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">192</span>         <span class="n">fid</span> <span class="o">=</span> <span class="n">h5f</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">h5f</span><span class="o">.</span><span class="n">ACC_RDWR</span><span class="p">,</span> <span class="n">fapl</span><span class="o">=</span><span class="n">fapl</span><span class="p">)</span>
+
+<span class="nn">h5py/_objects.pyx</span> in <span class="ni">h5py._objects.with_phil.wrapper</span><span class="nt">()</span>
+
+<span class="nn">h5py/_objects.pyx</span> in <span class="ni">h5py._objects.with_phil.wrapper</span><span class="nt">()</span>
+
+<span class="nn">h5py/h5f.pyx</span> in <span class="ni">h5py.h5f.open</span><span class="nt">()</span>
+
+<span class="ne">OSError</span>: Unable to open file (unable to open file: name = &#39;./outGoM/h5/topology.p0.h5&#39;, errno = 2, error message = &#39;No such file or directory&#39;, flags = 0, o_flags = 0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Exporting the <code class="docutils literal notranslate"><span class="pre">netcdf</span></code> file on the desired bounding box:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ncgrid</span><span class="o">.</span><span class="n">exportNetCDF</span><span class="p">(</span><span class="n">ncfile</span><span class="o">=</span><span class="s1">&#39;GoMresult2.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mi">13</span><span class="n">bf0a7e4510</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ncgrid</span><span class="o">.</span><span class="n">exportNetCDF</span><span class="p">(</span><span class="n">ncfile</span><span class="o">=</span><span class="s1">&#39;GoMresult2.nc&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;ncgrid&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="visualising-with-xarray">
+<h2>Visualising with <code class="docutils literal notranslate"><span class="pre">xarray</span></code><a class="headerlink" href="#visualising-with-xarray" title="Permalink to this headline">¶</a></h2>
+<p>Let first use the <code class="docutils literal notranslate"><span class="pre">netcdf</span></code> file created and open it with the <code class="docutils literal notranslate"><span class="pre">xarray</span></code> library in the jupyter environment:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;GoMresult2.nc&quot;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">/usr/share/miniconda/envs/stellar/lib/python3.8/site-packages/xarray/backends/file_manager.py</span> in <span class="ni">_acquire_with_cache_info</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">199</span>                 <span class="n">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span>             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+
+<span class="nn">/usr/share/miniconda/envs/stellar/lib/python3.8/site-packages/xarray/backends/lru_cache.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span>         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">53</span>             <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;/home/runner/work/stellar-sfm/stellar-sfm/book/GoM/GoMresult2.nc&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False))]
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="n">cb3b2ca29ced</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;GoMresult2.nc&quot;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ds</span>
+
+<span class="nn">/usr/share/miniconda/envs/stellar/lib/python3.8/site-packages/xarray/backends/api.py</span> in <span class="ni">open_dataset</span><span class="nt">(filename_or_obj, group, decode_cf, mask_and_scale, decode_times, concat_characters, decode_coords, engine, chunks, lock, cache, drop_variables, backend_kwargs, use_cftime, decode_timedelta)</span>
+<span class="g g-Whitespace">    </span><span class="mi">552</span> 
+<span class="g g-Whitespace">    </span><span class="mi">553</span>         <span class="n">opener</span> <span class="o">=</span> <span class="n">_get_backend_cls</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">554</span>         <span class="n">store</span> <span class="o">=</span> <span class="n">opener</span><span class="p">(</span><span class="n">filename_or_obj</span><span class="p">,</span> <span class="o">**</span><span class="n">extra_kwargs</span><span class="p">,</span> <span class="o">**</span><span class="n">backend_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">555</span> 
+<span class="g g-Whitespace">    </span><span class="mi">556</span>     <span class="k">with</span> <span class="n">close_on_error</span><span class="p">(</span><span class="n">store</span><span class="p">):</span>
+
+<span class="nn">/usr/share/miniconda/envs/stellar/lib/python3.8/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ni">open</span><span class="nt">(cls, filename, mode, format, group, clobber, diskless, persist, lock, lock_maker, autoclose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">376</span>             <span class="n">netCDF4</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span>
+<span class="g g-Whitespace">    </span><span class="mi">377</span>         <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">378</span>         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">manager</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">lock</span><span class="o">=</span><span class="n">lock</span><span class="p">,</span> <span class="n">autoclose</span><span class="o">=</span><span class="n">autoclose</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">379</span> 
+<span class="g g-Whitespace">    </span><span class="mi">380</span>     <span class="k">def</span> <span class="nf">_acquire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">needs_lock</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+<span class="nn">/usr/share/miniconda/envs/stellar/lib/python3.8/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ni">__init__</span><span class="nt">(self, manager, group, mode, lock, autoclose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">324</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_group</span> <span class="o">=</span> <span class="n">group</span>
+<span class="g g-Whitespace">    </span><span class="mi">325</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">mode</span>
+<span class="ne">--&gt; </span><span class="mi">326</span>         <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ds</span><span class="o">.</span><span class="n">data_model</span>
+<span class="g g-Whitespace">    </span><span class="mi">327</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ds</span><span class="o">.</span><span class="n">filepath</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">328</span>         <span class="bp">self</span><span class="o">.</span><span class="n">is_remote</span> <span class="o">=</span> <span class="n">is_remote_uri</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filename</span><span class="p">)</span>
+
+<span class="nn">/usr/share/miniconda/envs/stellar/lib/python3.8/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ni">ds</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">385</span>     <span class="nd">@property</span>
+<span class="g g-Whitespace">    </span><span class="mi">386</span>     <span class="k">def</span> <span class="nf">ds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">387</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acquire</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">388</span> 
+<span class="g g-Whitespace">    </span><span class="mi">389</span>     <span class="k">def</span> <span class="nf">open_store_variable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
+
+<span class="nn">/usr/share/miniconda/envs/stellar/lib/python3.8/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ni">_acquire</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">379</span> 
+<span class="g g-Whitespace">    </span><span class="mi">380</span>     <span class="k">def</span> <span class="nf">_acquire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">needs_lock</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">381</span>         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_manager</span><span class="o">.</span><span class="n">acquire_context</span><span class="p">(</span><span class="n">needs_lock</span><span class="p">)</span> <span class="k">as</span> <span class="n">root</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">382</span>             <span class="n">ds</span> <span class="o">=</span> <span class="n">_nc4_require_group</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">383</span>         <span class="k">return</span> <span class="n">ds</span>
+
+<span class="nn">/usr/share/miniconda/envs/stellar/lib/python3.8/contextlib.py</span> in <span class="ni">__enter__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span>         <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">113</span>             <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span>         <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span>             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;generator didn&#39;t yield&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
+
+<span class="nn">/usr/share/miniconda/envs/stellar/lib/python3.8/site-packages/xarray/backends/file_manager.py</span> in <span class="ni">acquire_context</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="k">def</span> <span class="nf">acquire_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">needs_lock</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span>         <span class="sd">&quot;&quot;&quot;Context manager for acquiring a file.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">file</span><span class="p">,</span> <span class="n">cached</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acquire_with_cache_info</span><span class="p">(</span><span class="n">needs_lock</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span>         <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span>             <span class="k">yield</span> <span class="n">file</span>
+
+<span class="nn">/usr/share/miniconda/envs/stellar/lib/python3.8/site-packages/xarray/backends/file_manager.py</span> in <span class="ni">_acquire_with_cache_info</span><span class="nt">(self, needs_lock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span>                     <span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span>                     <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span>
+<span class="ne">--&gt; </span><span class="mi">205</span>                 <span class="n">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_opener</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span>                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">==</span> <span class="s2">&quot;w&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">207</span>                     <span class="c1"># ensure file doesn&#39;t get overriden when opened again</span>
+
+<span class="nn">src/netCDF4/_netCDF4.pyx</span> in <span class="ni">netCDF4._netCDF4.Dataset.__init__</span><span class="nt">()</span>
+
+<span class="nn">src/netCDF4/_netCDF4.pyx</span> in <span class="ni">netCDF4._netCDF4._ensure_nc_success</span><span class="nt">()</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: b&#39;/home/runner/work/stellar-sfm/stellar-sfm/book/GoM/GoMresult2.nc&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default the mesh is written in lon/lat (projection <a class="reference external" href="https://spatialreference.org/ref/epsg/wgs-84/">epsg:4326</a> as <code class="docutils literal notranslate"><span class="pre">gospl</span></code> is a global model).</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">rioxarray</span></code> library we have the ability to reproject the dataset in any other type of projection. Let’s reproject the dataset in <code class="docutils literal notranslate"><span class="pre">utm</span></code> coordinates:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">write_crs</span><span class="p">(</span><span class="mi">4326</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Default projection:&#39;</span><span class="p">,</span><span class="n">ds</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Estimated UTM projection:&#39;</span><span class="p">,</span><span class="n">ds</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">estimate_utm_crs</span><span class="p">())</span>
+<span class="n">ds_utm</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">reproject</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">estimate_utm_crs</span><span class="p">())</span>
+
+<span class="n">ds_utm</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="mi">656</span><span class="n">dc95c39d4</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">write_crs</span><span class="p">(</span><span class="mi">4326</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Default projection:&#39;</span><span class="p">,</span><span class="n">ds</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Estimated UTM projection:&#39;</span><span class="p">,</span><span class="n">ds</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">estimate_utm_crs</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">ds_utm</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">reproject</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">estimate_utm_crs</span><span class="p">())</span>
+
+<span class="ne">NameError</span>: name &#39;ds&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will now take a specific time step using the <code class="docutils literal notranslate"><span class="pre">isel</span></code> function (here we chose the last time step) and extract the elevation data variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Taking the last time step of the elevation array</span>
+<span class="n">elevArray</span> <span class="o">=</span> <span class="n">ds_utm</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])[</span><span class="s2">&quot;elevation&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">,:,:]</span>
+
+<span class="c1"># Assigning a value of -9999.0 to all point below sea-level</span>
+<span class="n">elevArray</span> <span class="o">=</span> <span class="n">elevArray</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">elevArray</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">,</span> <span class="n">other</span><span class="o">=-</span><span class="mf">9999.0</span><span class="p">)</span>
+
+<span class="c1"># Export to geotiff</span>
+<span class="n">elevArray</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">to_raster</span><span class="p">(</span><span class="s1">&#39;GoMtime5.tif&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="mi">0</span><span class="n">f72d10fd279</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Taking the last time step of the elevation array</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">elevArray</span> <span class="o">=</span> <span class="n">ds_utm</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])[</span><span class="s2">&quot;elevation&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">,:,:]</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Assigning a value of -9999.0 to all point below sea-level</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">elevArray</span> <span class="o">=</span> <span class="n">elevArray</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">elevArray</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">,</span> <span class="n">other</span><span class="o">=-</span><span class="mf">9999.0</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;ds_utm&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="using-pysheds-library-for-watershed-delineation">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">pysheds</span></code> library for watershed delineation<a class="headerlink" href="#using-pysheds-library-for-watershed-delineation" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Information regarding the <code class="docutils literal notranslate"><span class="pre">pysheds</span></code> library can be found on the project github <a class="reference external" href="https://github.com/mdbartos/pysheds">page</a>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plotraster</span><span class="p">(</span><span class="n">grd</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">nd</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">v_min</span><span class="p">,</span> <span class="n">v_max</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Simple plotting function to visualise the raster dataset</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span> <span class="o">&lt;=</span> <span class="n">nd</span><span class="p">))</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">grd</span><span class="o">.</span><span class="n">extent</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">v_min</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">v_max</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We first read the DEM data (<em>i.e.</em> the geotiff file created above):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">Grid</span><span class="o">.</span><span class="n">from_raster</span><span class="p">(</span><span class="s1">&#39;GoMtime5.tif&#39;</span><span class="p">,</span> <span class="n">data_name</span><span class="o">=</span><span class="s1">&#39;dem&#39;</span><span class="p">)</span>
+<span class="n">dem</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;dem&#39;</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=-</span><span class="mf">9999.0</span><span class="p">)</span>
+<span class="n">dem</span><span class="p">[</span><span class="n">dem</span> <span class="o">==</span> <span class="o">-</span><span class="mi">9999</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+
+<span class="c1"># Compute the depressions</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">fill_depressions</span><span class="p">(</span><span class="s1">&#39;dem&#39;</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;filled&#39;</span><span class="p">,</span>
+                      <span class="n">nodata_in</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">nodata_out</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span>
+<span class="n">filled</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;filled&#39;</span><span class="p">,</span> <span class="n">nodata</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># Resolve flat areas</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">resolve_flats</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;filled&#39;</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;demnoflat&#39;</span><span class="p">,</span>
+                   <span class="n">nodata_in</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">nodata_out</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span>
+<span class="n">demnoflat</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;demnoflat&#39;</span><span class="p">,</span> <span class="n">nodata</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># Compute the flow direction</span>
+<span class="n">dirmap</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">flowdir</span><span class="p">(</span><span class="s1">&#39;demnoflat&#39;</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;d8&#39;</span><span class="p">,</span> <span class="n">dirmap</span><span class="o">=</span><span class="n">dirmap</span><span class="p">,</span>
+             <span class="n">nodata_in</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">nodata_out</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">pits</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">flats</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span>
+<span class="n">d8</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;d8&#39;</span><span class="p">,</span> <span class="n">nodata</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># Compute the flow accumulation</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">accumulation</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;d8&#39;</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;flowd8&#39;</span><span class="p">)</span>
+<span class="n">flowd8</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;flowd8&#39;</span><span class="p">,</span> <span class="n">nodata</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">flowd8</span><span class="p">[</span><span class="n">d8</span> <span class="o">==</span> <span class="o">-</span><span class="mi">9999</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">CPLE_OpenFailedError</span><span class="g g-Whitespace">                      </span>Traceback (most recent call last)
+<span class="nn">rasterio/_base.pyx</span> in <span class="ni">rasterio._base.DatasetBase.__init__</span><span class="nt">()</span>
+
+<span class="nn">rasterio/_shim.pyx</span> in <span class="ni">rasterio._shim.open_dataset</span><span class="nt">()</span>
+
+<span class="nn">rasterio/_err.pyx</span> in <span class="ni">rasterio._err.exc_wrap_pointer</span><span class="nt">()</span>
+
+<span class="ne">CPLE_OpenFailedError</span>: GoMtime5.tif: No such file or directory
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">RasterioIOError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="n">a1a971788bfd</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">grid</span> <span class="o">=</span> <span class="n">Grid</span><span class="o">.</span><span class="n">from_raster</span><span class="p">(</span><span class="s1">&#39;GoMtime5.tif&#39;</span><span class="p">,</span> <span class="n">data_name</span><span class="o">=</span><span class="s1">&#39;dem&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">dem</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;dem&#39;</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=-</span><span class="mf">9999.0</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">dem</span><span class="p">[</span><span class="n">dem</span> <span class="o">==</span> <span class="o">-</span><span class="mi">9999</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+
+<span class="nn">/usr/share/miniconda/envs/stellar/lib/python3.8/site-packages/pysheds/grid.py</span> in <span class="ni">from_raster</span><span class="nt">(cls, path, data_name, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">315</span>     <span class="k">def</span> <span class="nf">from_raster</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">data_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">316</span>         <span class="n">newinstance</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">317</span>         <span class="n">newinstance</span><span class="o">.</span><span class="n">read_raster</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">data_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">318</span>         <span class="k">return</span> <span class="n">newinstance</span>
+<span class="g g-Whitespace">    </span><span class="mi">319</span> 
+
+<span class="nn">/usr/share/miniconda/envs/stellar/lib/python3.8/site-packages/pysheds/grid.py</span> in <span class="ni">read_raster</span><span class="nt">(self, data, data_name, band, window, window_crs, metadata, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">269</span>         <span class="k">if</span> <span class="ow">not</span> <span class="n">_HAS_RASTERIO</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">270</span>             <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s1">&#39;Requires rasterio module&#39;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">271</span>         <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">272</span>             <span class="n">crs</span> <span class="o">=</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">Proj</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">preserve_units</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">273</span>             <span class="k">if</span> <span class="n">window</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">/usr/share/miniconda/envs/stellar/lib/python3.8/site-packages/rasterio/env.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">433</span> 
+<span class="g g-Whitespace">    </span><span class="mi">434</span>         <span class="k">with</span> <span class="n">env_ctor</span><span class="p">(</span><span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">435</span>             <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">436</span> 
+<span class="g g-Whitespace">    </span><span class="mi">437</span>     <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nn">/usr/share/miniconda/envs/stellar/lib/python3.8/site-packages/rasterio/__init__.py</span> in <span class="ni">open</span><span class="nt">(fp, mode, driver, width, height, count, crs, transform, dtype, nodata, sharing, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">205</span>         <span class="c1"># None.</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span>         <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;r&#39;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">207</span>             <span class="n">s</span> <span class="o">=</span> <span class="n">DatasetReader</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="n">driver</span><span class="p">,</span> <span class="n">sharing</span><span class="o">=</span><span class="n">sharing</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">208</span>         <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;r+&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span>             <span class="n">s</span> <span class="o">=</span> <span class="n">get_writer_for_path</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="n">driver</span><span class="p">)(</span>
+
+<span class="nn">rasterio/_base.pyx</span> in <span class="ni">rasterio._base.DatasetBase.__init__</span><span class="nt">()</span>
+
+<span class="ne">RasterioIOError</span>: GoMtime5.tif: No such file or directory
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s visualise the generated outputs with our plotting function <code class="docutils literal notranslate"><span class="pre">plotraster</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotraster</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">dem</span><span class="p">,</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="s1">&#39;Elevation (m)&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="s1">&#39;gist_earth&#39;</span><span class="p">)</span>
+<span class="n">plotraster</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">demnoflat</span> <span class="o">-</span> <span class="n">dem</span><span class="p">,</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="s1">&#39;fill no flat (m)&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;RdBu_r&#39;</span><span class="p">)</span>
+<span class="n">plotraster</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">d8</span><span class="p">,</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="s1">&#39;flow direction&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;Accent_r&#39;</span><span class="p">)</span>
+<span class="n">plotraster</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">flowd8</span><span class="p">,</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="s1">&#39;flow accumulation&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">flowd8</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span> <span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">9</span><span class="o">-</span><span class="mi">0</span><span class="n">f8da79d11a9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plotraster</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">dem</span><span class="p">,</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="s1">&#39;Elevation (m)&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="s1">&#39;gist_earth&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plotraster</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">demnoflat</span> <span class="o">-</span> <span class="n">dem</span><span class="p">,</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="s1">&#39;fill no flat (m)&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;RdBu_r&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">plotraster</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">d8</span><span class="p">,</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="s1">&#39;flow direction&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;Accent_r&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plotraster</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">flowd8</span><span class="p">,</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="s1">&#39;flow accumulation&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">flowd8</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span> <span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;grid&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="extracting-specific-outlets">
+<h2>Extracting specific outlets<a class="headerlink" href="#extracting-specific-outlets" title="Permalink to this headline">¶</a></h2>
+<p>To extract specific catchments, <code class="docutils literal notranslate"><span class="pre">pysheds</span></code> requires the position of the outlet.</p>
+<p>Here we show how to extract some specific outlets based on the flow accumulation values.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The approach here could be automatised to make it easier for the user…</p>
+</div>
+<p>We start by finding the maximum flow accumulation in the entire raster and we will use the corresponding catchment for our analyse.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the point ID corresponding to the maximum flow accumulation value</span>
+<span class="n">outletID</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">flowd8</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="o">==</span> <span class="n">flowd8</span><span class="o">.</span><span class="n">max</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Get the corresponding point coordinate</span>
+<span class="n">outletPt</span> <span class="o">=</span> <span class="n">dem</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">outletID</span><span class="p">,:][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Define this first outlet by x1,y1</span>
+<span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">outletPt</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">outletPt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">e6058afe2d01</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Find the point ID corresponding to the maximum flow accumulation value</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">outletID</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">flowd8</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="o">==</span> <span class="n">flowd8</span><span class="o">.</span><span class="n">max</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Get the corresponding point coordinate</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">outletPt</span> <span class="o">=</span> <span class="n">dem</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">outletID</span><span class="p">,:][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;flowd8&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now extract a second outlet corrsponding to the biggest river entering the Gulf of Mexico:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the point ID corresponding to the maximum flow accumulation value in the Gulf of Mexico</span>
+<span class="n">outletID</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">flowd8</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="o">==</span> <span class="n">flowd8</span><span class="p">[</span><span class="mi">600</span><span class="p">:</span><span class="mi">800</span><span class="p">,</span><span class="mi">500</span><span class="p">:</span><span class="mi">700</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Get the corresponding point coordinate</span>
+<span class="n">outletPt</span> <span class="o">=</span> <span class="n">dem</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">outletID</span><span class="p">,:][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Define this first outlet by x2,y2</span>
+<span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">outletPt</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">outletPt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="n">c3660bae5139</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Find the point ID corresponding to the maximum flow accumulation value in the Gulf of Mexico</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">outletID</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">flowd8</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="o">==</span> <span class="n">flowd8</span><span class="p">[</span><span class="mi">600</span><span class="p">:</span><span class="mi">800</span><span class="p">,</span><span class="mi">500</span><span class="p">:</span><span class="mi">700</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Get the corresponding point coordinate</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">outletPt</span> <span class="o">=</span> <span class="n">dem</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">outletID</span><span class="p">,:][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;flowd8&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s see where these 2 outlets are:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">flowd8</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">flowd8</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">))</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">grid</span><span class="o">.</span><span class="n">extent</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">flowd8</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
+         <span class="n">markeredgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">markeredgewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
+         <span class="n">markeredgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">markeredgewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;flow accumulation&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">6</span><span class="n">f659c918760</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">flowd8</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">flowd8</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">grid</span><span class="o">.</span><span class="n">extent</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">flowd8</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;flowd8&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sounds good!</p>
+</div>
+<div class="section" id="get-corresponding-catchments">
+<h2>Get corresponding catchments<a class="headerlink" href="#get-corresponding-catchments" title="Permalink to this headline">¶</a></h2>
+<p>We now define a function <code class="docutils literal notranslate"><span class="pre">getCatchment</span></code> which extract river network (up to a specified flow accumulation <code class="docutils literal notranslate"><span class="pre">threshold</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">getCatchment</span><span class="p">(</span><span class="n">geotiff</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Extract a specific river network based on outlet position and flow accumulation threshold.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="n">grd</span> <span class="o">=</span> <span class="n">Grid</span><span class="o">.</span><span class="n">from_raster</span><span class="p">(</span><span class="n">geotiff</span><span class="p">,</span> <span class="n">data_name</span><span class="o">=</span><span class="s1">&#39;dem&#39;</span><span class="p">)</span>
+
+    <span class="n">grd</span><span class="o">.</span><span class="n">fill_depressions</span><span class="p">(</span><span class="s1">&#39;dem&#39;</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;filled&#39;</span><span class="p">,</span>
+                          <span class="n">nodata_in</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">nodata_out</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span>
+    <span class="n">grd</span><span class="o">.</span><span class="n">resolve_flats</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;filled&#39;</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;inflated_dem&#39;</span><span class="p">)</span>
+
+    <span class="n">dirmap</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">grd</span><span class="o">.</span><span class="n">flowdir</span><span class="p">(</span><span class="s1">&#39;inflated_dem&#39;</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;dir&#39;</span><span class="p">,</span> <span class="n">dirmap</span><span class="o">=</span><span class="n">dirmap</span><span class="p">,</span>
+                  <span class="n">nodata_in</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">nodata_out</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> 
+                  <span class="n">pits</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">flats</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span>
+    
+    <span class="n">grd</span><span class="o">.</span><span class="n">accumulation</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;dir&#39;</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;acc2&#39;</span><span class="p">)</span>
+
+    <span class="n">acc2</span> <span class="o">=</span> <span class="n">grd</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;acc2&#39;</span><span class="p">,</span> <span class="n">nodata</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">acc2</span><span class="p">[</span><span class="n">acc2</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span>
+    
+    <span class="n">grd</span><span class="o">.</span><span class="n">catchment</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;dir&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;catch&#39;</span><span class="p">,</span>
+                    <span class="n">recursionlimit</span><span class="o">=</span><span class="mi">15000</span><span class="p">,</span> <span class="n">xytype</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">)</span>
+
+    
+    <span class="n">grd</span><span class="o">.</span><span class="n">clip_to</span><span class="p">(</span><span class="s1">&#39;catch&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">grd</span><span class="o">.</span><span class="n">accumulation</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;catch&#39;</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;acc&#39;</span><span class="p">)</span>
+    
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">grd</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;acc&#39;</span><span class="p">,</span> <span class="n">nodata</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">acc</span><span class="p">[</span><span class="n">acc</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span>
+    
+    <span class="n">branches</span> <span class="o">=</span> <span class="n">grd</span><span class="o">.</span><span class="n">extract_river_network</span><span class="p">(</span><span class="s1">&#39;catch&#39;</span><span class="p">,</span> <span class="s1">&#39;acc&#39;</span><span class="p">,</span> <span class="n">dirmap</span><span class="o">=</span><span class="n">dirmap</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span> 
+                                       <span class="n">nodata_in</span><span class="o">=-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">routing</span><span class="o">=</span><span class="s1">&#39;d8&#39;</span><span class="p">,</span>
+                                       <span class="n">apply_mask</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">acc</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">acc</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">))</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">grd</span><span class="o">.</span><span class="n">extent</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">acc</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">markeredgewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;flow accumulation&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="n">tree</span> <span class="o">=</span> <span class="n">spatial</span><span class="o">.</span><span class="n">cKDTree</span><span class="p">(</span><span class="n">dem</span><span class="o">.</span><span class="n">coords</span><span class="p">,</span> <span class="n">leafsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    
+    <span class="n">branch_df</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">nbbranches</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">branches</span><span class="p">[</span><span class="s1">&#39;features&#39;</span><span class="p">])</span>
+    
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nbbranches</span><span class="p">):</span>
+        <span class="n">branch</span> <span class="o">=</span> <span class="n">branches</span><span class="p">[</span><span class="s1">&#39;features&#39;</span><span class="p">][</span><span class="n">b</span><span class="p">]</span>
+        <span class="n">branchXY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">branch</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">][</span><span class="s1">&#39;coordinates&#39;</span><span class="p">])</span>
+        <span class="n">branchXY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">branchXY</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">dist</span><span class="p">,</span> <span class="nb">id</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">branchXY</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">elev</span> <span class="o">=</span> <span class="n">demnoflat</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[</span><span class="nb">id</span><span class="p">]</span>
+        <span class="n">fa</span> <span class="o">=</span> <span class="n">acc2</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[</span><span class="nb">id</span><span class="p">]</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">branchXY</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">branchXY</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> 
+                          <span class="n">elev</span><span class="p">,</span> <span class="n">fa</span><span class="p">))</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+                          <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;elev&#39;</span><span class="p">,</span><span class="s1">&#39;fa&#39;</span><span class="p">])</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">fa</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">9999</span><span class="p">]</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">xx</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+        <span class="n">yy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="n">xx</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">-</span><span class="n">xx</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="n">yy</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">-</span><span class="n">yy</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">step_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">dy</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">cumulative_distance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(([</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">step_size</span><span class="p">)))</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;dist&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cumulative_distance</span>
+
+        <span class="n">branch_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+        
+    
+    <span class="n">endbranch</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">maxfa</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10000</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nbbranches</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">branch_df</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">.</span><span class="n">fa</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">maxfa</span><span class="p">:</span>
+            <span class="n">maxfa</span> <span class="o">=</span> <span class="n">branch_df</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">.</span><span class="n">fa</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">endbranch</span> <span class="o">=</span> <span class="n">b</span>
+            
+    <span class="n">newdf</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">newdf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">branch_df</span><span class="p">[</span><span class="n">endbranch</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nbbranches</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">b</span> <span class="o">!=</span> <span class="n">endbranch</span><span class="p">:</span>
+            <span class="n">newdf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">branch_df</span><span class="p">[</span><span class="n">b</span><span class="p">])</span>
+        
+    <span class="k">return</span> <span class="n">branches</span><span class="p">,</span> <span class="n">newdf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We call the function for the 2 outlets that were defined previously. The function returns 2 variables:</p>
+<ol class="simple">
+<li><p>a dictionnary containing the geometry and coordinates of the main rivers</p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> dataframe containing for each river the associated flow and elevation information</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">branches1</span><span class="p">,</span> <span class="n">bdf1</span> <span class="o">=</span> <span class="n">getCatchment</span><span class="p">(</span><span class="n">geotiff</span><span class="o">=</span><span class="s1">&#39;GoMtime5.tif&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y1</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">branches2</span><span class="p">,</span> <span class="n">bdf2</span> <span class="o">=</span> <span class="n">getCatchment</span><span class="p">(</span><span class="n">geotiff</span><span class="o">=</span><span class="s1">&#39;GoMtime5.tif&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y2</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">14</span><span class="o">-</span><span class="mi">71</span><span class="n">b6e92a78cd</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">branches1</span><span class="p">,</span> <span class="n">bdf1</span> <span class="o">=</span> <span class="n">getCatchment</span><span class="p">(</span><span class="n">geotiff</span><span class="o">=</span><span class="s1">&#39;GoMtime5.tif&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y1</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">branches2</span><span class="p">,</span> <span class="n">bdf2</span> <span class="o">=</span> <span class="n">getCatchment</span><span class="p">(</span><span class="n">geotiff</span><span class="o">=</span><span class="s1">&#39;GoMtime5.tif&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y2</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;x1&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="plotting-river-networks">
+<h3>Plotting river networks<a class="headerlink" href="#plotting-river-networks" title="Permalink to this headline">¶</a></h3>
+<p>The river networks can be obtained directly from the previous function first variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plotBranch</span><span class="p">(</span><span class="n">branchnb</span><span class="p">):</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="n">branchnb</span><span class="p">[</span><span class="s1">&#39;features&#39;</span><span class="p">]:</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">branch</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">][</span><span class="s1">&#39;coordinates&#39;</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">line</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">line</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotBranch</span><span class="p">(</span><span class="n">branches1</span><span class="p">)</span>
+<span class="n">plotBranch</span><span class="p">(</span><span class="n">branches2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">0</span><span class="n">d1b53880bae</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plotBranch</span><span class="p">(</span><span class="n">branches1</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plotBranch</span><span class="p">(</span><span class="n">branches2</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;branches1&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="longitudinal-profiles">
+<h3>Longitudinal profiles<a class="headerlink" href="#longitudinal-profiles" title="Permalink to this headline">¶</a></h3>
+<p>The second variable can be used to extract river longitudinal profile. To do so we define a new function <code class="docutils literal notranslate"><span class="pre">combineBranch</span></code> which connect each individual trunk together:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">combineBranch</span><span class="p">(</span><span class="n">branch_df</span><span class="p">):</span>
+    
+    <span class="n">check</span> <span class="o">=</span> <span class="kc">True</span>
+    
+    <span class="n">pp</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">nbbranches</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">branch_df</span><span class="p">)</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">check</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nbbranches</span><span class="p">):</span>
+            <span class="n">row1</span> <span class="o">=</span> <span class="n">branch_df</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">dist1</span> <span class="o">=</span> <span class="n">row1</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">row1</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">row1</span><span class="o">.</span><span class="n">dist</span>
+
+            <span class="n">lastrow</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">branch_df</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">xend</span><span class="p">,</span> <span class="n">yend</span><span class="p">,</span> <span class="n">distend</span> <span class="o">=</span> <span class="n">lastrow</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lastrow</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">lastrow</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="k">for</span> <span class="n">nextb</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nbbranches</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">nextb</span> <span class="o">!=</span> <span class="n">b</span><span class="p">:</span>
+                    <span class="n">firstrow</span> <span class="o">=</span> <span class="n">branch_df</span><span class="p">[</span><span class="n">nextb</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">xstart</span><span class="p">,</span> <span class="n">ystart</span><span class="p">,</span> <span class="n">diststart</span> <span class="o">=</span> <span class="n">firstrow</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">firstrow</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">firstrow</span><span class="o">.</span><span class="n">dist</span>
+                    <span class="n">changed</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="k">if</span> <span class="n">diststart</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xstart</span><span class="o">-</span><span class="n">xend</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ystart</span><span class="o">-</span><span class="n">yend</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                                <span class="n">branch_df</span><span class="p">[</span><span class="n">nextb</span><span class="p">]</span><span class="o">.</span><span class="n">dist</span> <span class="o">+=</span> <span class="n">distend</span>
+                                <span class="n">changed</span> <span class="o">=</span> <span class="kc">True</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="k">if</span> <span class="n">dist1</span> <span class="o">&gt;</span> <span class="mf">0.</span><span class="p">:</span>
+                                    <span class="n">branch_df</span><span class="p">[</span><span class="n">nextb</span><span class="p">]</span><span class="o">.</span><span class="n">dist</span> <span class="o">+=</span> <span class="n">distend</span>
+                                    <span class="n">changed</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">changed</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xstart</span><span class="o">-</span><span class="n">x1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ystart</span><span class="o">-</span><span class="n">y1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
+                                <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                                    <span class="n">branch_df</span><span class="p">[</span><span class="n">nextb</span><span class="p">]</span><span class="o">.</span><span class="n">dist</span> <span class="o">+=</span> <span class="mf">0.0001</span>
+                                <span class="k">else</span><span class="p">:</span>
+                                    <span class="n">branch_df</span><span class="p">[</span><span class="n">nextb</span><span class="p">]</span><span class="o">.</span><span class="n">dist</span> <span class="o">+=</span> <span class="n">dist1</span>            
+        
+        <span class="n">check</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nbbranches</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">branch_df</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dist</span> <span class="o">==</span> <span class="mf">0.</span><span class="p">:</span>
+                <span class="n">check</span> <span class="o">=</span> <span class="kc">True</span>
+                
+        
+    <span class="k">return</span> <span class="n">branch_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s call the above function for each catchment:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ndf1</span> <span class="o">=</span> <span class="n">combineBranch</span><span class="p">(</span><span class="n">branch_df</span><span class="o">=</span><span class="n">bdf1</span><span class="p">)</span>
+<span class="n">ndf2</span> <span class="o">=</span> <span class="n">combineBranch</span><span class="p">(</span><span class="n">branch_df</span><span class="o">=</span><span class="n">bdf2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">18</span><span class="o">-</span><span class="n">c300d3778bf7</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ndf1</span> <span class="o">=</span> <span class="n">combineBranch</span><span class="p">(</span><span class="n">branch_df</span><span class="o">=</span><span class="n">bdf1</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ndf2</span> <span class="o">=</span> <span class="n">combineBranch</span><span class="p">(</span><span class="n">branch_df</span><span class="o">=</span><span class="n">bdf2</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;bdf1&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now plot the longitudinal profiles:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plotProfile</span><span class="p">(</span><span class="n">dataframe</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Function for plotting the longitudinal profile.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataframe</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">distance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">dataframe</span><span class="p">[</span><span class="n">branch</span><span class="p">]</span><span class="o">.</span><span class="n">dist</span><span class="p">)</span>
+        <span class="n">elev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">dataframe</span><span class="p">[</span><span class="n">branch</span><span class="p">]</span><span class="o">.</span><span class="n">elev</span><span class="p">)</span>
+
+        <span class="n">xnew</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">distance</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">distance</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">10</span><span class="p">)</span> 
+        <span class="n">spl</span> <span class="o">=</span> <span class="n">make_interp_spline</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">elev</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># type: BSpline</span>
+        <span class="n">elev_smooth</span> <span class="o">=</span> <span class="n">spl</span><span class="p">(</span><span class="n">xnew</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xnew</span><span class="p">,</span> <span class="n">elev_smooth</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotProfile</span><span class="p">(</span><span class="n">ndf1</span><span class="p">)</span>
+<span class="n">plotProfile</span><span class="p">(</span><span class="n">ndf2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">20</span><span class="o">-</span><span class="mf">4813e30</span><span class="n">be499</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plotProfile</span><span class="p">(</span><span class="n">ndf1</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plotProfile</span><span class="p">(</span><span class="n">ndf2</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;ndf1&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./GoM"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="export_format.html" title="previous page">Exporting <code class="docutils literal notranslate"><span class="pre">gospl</span></code> outputs</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By the EarthCoLab Group for the STELLAR Project - Program 3<br/>
+        
+            &copy; Copyright 2021-2024.<br/>
+          <div class="extra_footer">
+            <p>
+<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+  <img align="right" class="margin" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by.svg" width="88px">
+</a>
+This Jupyter Book and all its content are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0) license</a>.
+</p>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

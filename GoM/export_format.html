@@ -57,6 +57,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Extract catchment characteristics" href="river_catchment.html" />
     <link rel="prev" title="Modelling landscape evolution" href="run_model.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -110,6 +111,11 @@
     </span>
    </code>
    outputs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="river_catchment.html">
+   Extract catchment characteristics
   </a>
  </li>
 </ul>
@@ -351,7 +357,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">UnboundLocalError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
 <span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">fb16eb712265</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
 <span class="g g-Whitespace">     </span><span class="mi">15</span>         <span class="c1"># Calling the initialisation function for our class</span>
@@ -367,20 +373,40 @@
 <span class="g g-Whitespace">     </span><span class="mi">63</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">nbstep</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 
 <span class="nn">~/work/stellar-sfm/stellar-sfm/book/GoM/script/readOutput.py</span> in <span class="ni">_readElevationData</span><span class="nt">(self, step)</span>
-<span class="g g-Whitespace">    </span><span class="mi">588</span>     <span class="k">def</span> <span class="nf">_readElevationData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">589</span> 
-<span class="ne">--&gt; </span><span class="mi">590</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_getCoordinates</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">591</span> 
-<span class="g g-Whitespace">    </span><span class="mi">592</span>         <span class="k">return</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span>     <span class="k">def</span> <span class="nf">_readElevationData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">592</span> 
+<span class="ne">--&gt; </span><span class="mi">593</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_getCoordinates</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">594</span> 
+<span class="g g-Whitespace">    </span><span class="mi">595</span>         <span class="k">return</span>
 
 <span class="nn">~/work/stellar-sfm/stellar-sfm/book/GoM/script/readOutput.py</span> in <span class="ni">_getCoordinates</span><span class="nt">(self, step)</span>
-<span class="g g-Whitespace">    </span><span class="mi">352</span>             <span class="n">df</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">353</span> 
-<span class="ne">--&gt; </span><span class="mi">354</span>         <span class="bp">self</span><span class="o">.</span><span class="n">nbPts</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">355</span>         <span class="n">ncoords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">nbPts</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">356</span>         <span class="n">ncoords</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">312</span> 
+<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nbCPUs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">314</span>             <span class="n">df</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/h5/topology.p</span><span class="si">%s</span><span class="s2">.h5&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outputDir</span><span class="p">,</span> <span class="n">k</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">315</span>             <span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;/coords&quot;</span><span class="p">]))</span>
+<span class="g g-Whitespace">    </span><span class="mi">316</span> 
 
-<span class="ne">UnboundLocalError</span>: local variable &#39;x&#39; referenced before assignment
+<span class="nn">/usr/share/miniconda/envs/stellar/lib/python3.8/site-packages/h5py/_hl/files.py</span> in <span class="ni">__init__</span><span class="nt">(self, name, mode, driver, libver, userblock_size, swmr, rdcc_nslots, rdcc_nbytes, rdcc_w0, track_order, fs_strategy, fs_persist, fs_threshold, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">422</span>             <span class="k">with</span> <span class="n">phil</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">423</span>                 <span class="n">fapl</span> <span class="o">=</span> <span class="n">make_fapl</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="n">libver</span><span class="p">,</span> <span class="n">rdcc_nslots</span><span class="p">,</span> <span class="n">rdcc_nbytes</span><span class="p">,</span> <span class="n">rdcc_w0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">424</span>                 <span class="n">fid</span> <span class="o">=</span> <span class="n">make_fid</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">userblock_size</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">425</span>                                <span class="n">fapl</span><span class="p">,</span> <span class="n">fcpl</span><span class="o">=</span><span class="n">make_fcpl</span><span class="p">(</span><span class="n">track_order</span><span class="o">=</span><span class="n">track_order</span><span class="p">,</span> <span class="n">fs_strategy</span><span class="o">=</span><span class="n">fs_strategy</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">426</span>                                <span class="n">fs_persist</span><span class="o">=</span><span class="n">fs_persist</span><span class="p">,</span> <span class="n">fs_threshold</span><span class="o">=</span><span class="n">fs_threshold</span><span class="p">),</span>
+
+<span class="nn">/usr/share/miniconda/envs/stellar/lib/python3.8/site-packages/h5py/_hl/files.py</span> in <span class="ni">make_fid</span><span class="nt">(name, mode, userblock_size, fapl, fcpl, swmr)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span>         <span class="k">if</span> <span class="n">swmr</span> <span class="ow">and</span> <span class="n">swmr_support</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span>             <span class="n">flags</span> <span class="o">|=</span> <span class="n">h5f</span><span class="o">.</span><span class="n">ACC_SWMR_READ</span>
+<span class="ne">--&gt; </span><span class="mi">190</span>         <span class="n">fid</span> <span class="o">=</span> <span class="n">h5f</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">fapl</span><span class="o">=</span><span class="n">fapl</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">191</span>     <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;r+&#39;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">192</span>         <span class="n">fid</span> <span class="o">=</span> <span class="n">h5f</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">h5f</span><span class="o">.</span><span class="n">ACC_RDWR</span><span class="p">,</span> <span class="n">fapl</span><span class="o">=</span><span class="n">fapl</span><span class="p">)</span>
+
+<span class="nn">h5py/_objects.pyx</span> in <span class="ni">h5py._objects.with_phil.wrapper</span><span class="nt">()</span>
+
+<span class="nn">h5py/_objects.pyx</span> in <span class="ni">h5py._objects.with_phil.wrapper</span><span class="nt">()</span>
+
+<span class="nn">h5py/h5f.pyx</span> in <span class="ni">h5py.h5f.open</span><span class="nt">()</span>
+
+<span class="ne">OSError</span>: Unable to open file (unable to open file: name = &#39;./outGoM/h5/topology.p0.h5&#39;, errno = 2, error message = &#39;No such file or directory&#39;, flags = 0, o_flags = 0)
 </pre></div>
 </div>
 </div>
@@ -1209,7 +1235,7 @@
 
 
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {"54f267ff34a44089bf1fd8cce182ffe6": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "d9cef530778f451fae5e09b6449ea3ff": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "891fc50c760a428ba336da8cd95c09a9": {"model_name": "FloatSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "FloatSliderView", "continuous_update": true, "description": "", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_54f267ff34a44089bf1fd8cce182ffe6", "max": 10.0, "min": 0.0, "orientation": "horizontal", "readout": true, "readout_format": ".2f", "step": 0.1, "style": "IPY_MODEL_d9cef530778f451fae5e09b6449ea3ff", "value": 5.0}}}, "version_major": 2, "version_minor": 0}
+{"state": {"bfed25984f5343508241dbbbc1b2a8e2": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ee2c3873f71847fda5b8ca99eaf64359": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "2e1d4eedc0d54495b0b028155789e8e2": {"model_name": "FloatSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "FloatSliderView", "continuous_update": true, "description": "", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_bfed25984f5343508241dbbbc1b2a8e2", "max": 10.0, "min": 0.0, "orientation": "horizontal", "readout": true, "readout_format": ".2f", "step": 0.1, "style": "IPY_MODEL_ee2c3873f71847fda5b8ca99eaf64359", "value": 5.0}}}, "version_major": 2, "version_minor": 0}
 </script>
 
 
@@ -1239,6 +1265,7 @@
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="run_model.html" title="previous page">Modelling landscape evolution</a>
+    <a class='right-next' id="next-link" href="river_catchment.html" title="next page">Extract catchment characteristics</a>
 
         </div>
         
