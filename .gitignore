@@ -4,6 +4,7 @@ book/.ipynb_checkpoints/
 *.DS_Store
 book/_build
 book/GoM/.ipynb_checkpoints
+book/GoM/outGoM
 book/GoM/input25km
 book/GoM/gospl_data
 book/GoM/script/__pycache__/
