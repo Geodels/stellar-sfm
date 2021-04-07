@@ -307,6 +307,9 @@ class readOutput:
 
     def _getCoordinates(self, step):
 
+        if self.nbCPUs == 0:
+            self.nbCPUs = 1
+            
         for k in range(self.nbCPUs):
             df = h5py.File("%s/h5/topology.p%s.h5" % (self.outputDir, k), "r")
             coords = np.array((df["/coords"]))
