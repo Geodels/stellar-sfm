@@ -55,6 +55,8 @@ dependencies:
   - rioxarray
   - rasterio
   - ipygany
+  - fiona
+  - pycrs
   - richdem
   - holoviews
   - geoviews
