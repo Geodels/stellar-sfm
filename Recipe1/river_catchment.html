@@ -1,0 +1,1845 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catchment characteristics &#8212; Surface Evolution &amp; Stratigraphy Modelling  STELLAR Project</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.c441f2ba0852f4cabcb80105e3a46ae6.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Interactive application" href="interactive_plots.html" />
+    <link rel="prev" title="Outputs export" href="export_format.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Surface Evolution & Stratigraphy Modelling  STELLAR Project</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Recipe 1
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="build_input.html">
+   Inputs definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="run_model.html">
+   Landscape evolution
+  </a>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="export_format.html">
+   Outputs export
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Catchment characteristics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="interactive_plots.html">
+     Interactive application
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Recipe1/river_catchment.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Geodels/stellar-sfm"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/Geodels/stellar-sfm/issues/new?title=Issue%20on%20page%20%2FRecipe1/river_catchment.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/Geodels/stellar-sfm/edit/master/book/Recipe1/river_catchment.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Geodels/stellar-sfm/master?urlpath=tree/book/Recipe1/river_catchment.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-required-libraries">
+   Loading required libraries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-a-netcdf-file">
+   Building a Netcdf file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualising-with-xarray">
+   Visualising with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     xarray
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-pysheds-library-for-watershed-delineation">
+   Using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pysheds
+    </span>
+   </code>
+   library for watershed delineation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-specific-outlets">
+   Extracting specific outlets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-corresponding-catchments">
+   Get corresponding catchments
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-river-networks">
+     Plotting river networks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#longitudinal-profiles">
+     Longitudinal profiles
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="catchment-characteristics">
+<h1>Catchment characteristics<a class="headerlink" href="#catchment-characteristics" title="Permalink to this headline">¶</a></h1>
+<p>We will see how to extract specific catchments from model outputs and their main rivers longitudinal profiles.</p>
+<div class="section" id="loading-required-libraries">
+<h2>Loading required libraries<a class="headerlink" href="#loading-required-libraries" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">script</span> <span class="kn">import</span> <span class="n">readOutput</span> <span class="k">as</span> <span class="n">rout</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">rioxarray</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">spatial</span>
+
+<span class="kn">from</span> <span class="nn">pysheds.grid</span> <span class="kn">import</span> <span class="n">Grid</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">make_interp_spline</span><span class="p">,</span> <span class="n">BSpline</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">label_size</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">label_size</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">label_size</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;svg&#39;
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<p>We first define a folder where exported files will be stored:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out_path</span> <span class="o">=</span> <span class="s1">&#39;export&#39;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">out_path</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">out_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="building-a-netcdf-file">
+<h2>Building a Netcdf file<a class="headerlink" href="#building-a-netcdf-file" title="Permalink to this headline">¶</a></h2>
+<p>As for many of the approach described in these examples, we start by building from our <code class="docutils literal notranslate"><span class="pre">gospl</span></code> outputs a <code class="docutils literal notranslate"><span class="pre">netcdf</span></code> file.</p>
+<p>As we saw previously, <code class="docutils literal notranslate"><span class="pre">netcdf</span></code> exports are done by using the <code class="docutils literal notranslate"><span class="pre">readOutput.py</span></code> script presented in the previous notebook. Here we export all the time steps at once by looping through the number of outputs (5 in this case).</p>
+<div class="note dropdown admonition">
+<p class="admonition-title">Arguments for <code class="docutils literal notranslate"><span class="pre">readOutput.py</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">readOutput.py</span></code> script main function requires several arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code>: the path to the input file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: the name of the input file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">step</span></code>: the step you wish to output (here set to 5 corresponding to the last output based on the input parameters: start time 0 year, end time 50 thousand years with an output every 10 thousand years)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nbstep</span></code>: the number of time steps to plot (useful if one want to output a <code class="docutils literal notranslate"><span class="pre">netdcf</span></code> file containing all time steps (done in the following section).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uplift_forcing</span></code>: set to False as we are not considering any tectonic forcing</p></li>
+</ul>
+</div>
+<p>Then the <code class="docutils literal notranslate"><span class="pre">buildLonLatMesh</span></code> function is used to interpolate (using a <code class="docutils literal notranslate"><span class="pre">kd-tree</span></code> approach) the <code class="docutils literal notranslate"><span class="pre">gospl</span></code> variables on a regular mesh. It also provides a way to limit the created <code class="docutils literal notranslate"><span class="pre">netcdf</span></code> file by defining a <code class="docutils literal notranslate"><span class="pre">bounding</span> <span class="pre">box</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uplift_forcing</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># Specifying the grid resolution in degrees</span>
+<span class="n">reso</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="c1"># Total number of outputs</span>
+<span class="n">nbstep</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># Bounding box</span>
+<span class="n">bb</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">134</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="o">-</span><span class="mi">46</span><span class="p">,</span><span class="mi">80</span><span class="p">]</span>
+
+<span class="c1"># Looping through the output time steps</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nbstep</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># Calling the initialisation function for our class </span>
+        <span class="n">ncgrid</span> <span class="o">=</span> <span class="n">rout</span><span class="o">.</span><span class="n">readOutput</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;./&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;input.yml&#39;</span><span class="p">,</span> 
+                                 <span class="n">step</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">nbstep</span><span class="o">=</span><span class="n">nbstep</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> 
+                                 <span class="n">uplift</span><span class="o">=</span><span class="n">uplift_forcing</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Update the variables after the first time steps</span>
+        <span class="n">ncgrid</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">step</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">uplift</span><span class="o">=</span><span class="n">uplift_forcing</span><span class="p">)</span>
+    
+    <span class="c1"># Build the regular grid defining the bounding box</span>
+    <span class="n">ncgrid</span><span class="o">.</span><span class="n">buildLonLatMesh</span><span class="p">(</span><span class="n">res</span><span class="o">=</span><span class="n">reso</span><span class="p">,</span> <span class="n">nghb</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">134</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="o">-</span><span class="mi">46</span><span class="p">,</span><span class="mi">80</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Exporting the <code class="docutils literal notranslate"><span class="pre">netcdf</span></code> file on the desired bounding box:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ncout</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">out_path</span><span class="p">,</span> <span class="s2">&quot;GoMresult.nc&quot;</span><span class="p">)</span>
+<span class="n">ncgrid</span><span class="o">.</span><span class="n">exportNetCDF</span><span class="p">(</span><span class="n">ncfile</span> <span class="o">=</span> <span class="n">ncout</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="visualising-with-xarray">
+<h2>Visualising with <code class="docutils literal notranslate"><span class="pre">xarray</span></code><a class="headerlink" href="#visualising-with-xarray" title="Permalink to this headline">¶</a></h2>
+<p>Let first use the <code class="docutils literal notranslate"><span class="pre">netcdf</span></code> file created and open it with the <code class="docutils literal notranslate"><span class="pre">xarray</span></code> library in the jupyter environment:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">ncout</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:        (latitude: 681, longitude: 881, time: 6)
+Coordinates:
+  * time           (time) float64 0.0 1e+04 2e+04 3e+04 4e+04 5e+04
+  * latitude       (latitude) float64 12.0 12.1 12.2 12.3 ... 79.8 79.9 80.0
+  * longitude      (longitude) float64 -134.0 -133.9 -133.8 ... -46.1 -46.0
+Data variables:
+    elevation      (time, latitude, longitude) float64 ...
+    erodep         (time, latitude, longitude) float64 ...
+    precipitation  (time, latitude, longitude) float64 ...
+    drainageArea   (time, latitude, longitude) float64 ...
+    basinID        (time, latitude, longitude) int32 ...
+Attributes:
+    description:  gospl outputs
+    history:      Created Thu Apr  8 01:50:32 2021</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-5b087fa0-e37e-43fe-a2b2-feea5e81ead0' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-5b087fa0-e37e-43fe-a2b2-feea5e81ead0' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>latitude</span>: 681</li><li><span class='xr-has-index'>longitude</span>: 881</li><li><span class='xr-has-index'>time</span>: 6</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-6a7ef1fc-359f-4e55-ba93-422ac79a49cc' class='xr-section-summary-in' type='checkbox'  checked><label for='section-6a7ef1fc-359f-4e55-ba93-422ac79a49cc' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 1e+04 2e+04 3e+04 4e+04 5e+04</div><input id='attrs-63426084-a57c-4df1-bf2c-06df6fb1ad09' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-63426084-a57c-4df1-bf2c-06df6fb1ad09' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e2eee848-5220-4166-b881-fb012fd6420d' class='xr-var-data-in' type='checkbox'><label for='data-e2eee848-5220-4166-b881-fb012fd6420d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>days since 0000-01-01</dd><dt><span>calendar :</span></dt><dd>365_day</dd></dl></div><div class='xr-var-data'><pre>array([    0., 10000., 20000., 30000., 40000., 50000.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>12.0 12.1 12.2 ... 79.8 79.9 80.0</div><input id='attrs-ad9d3c36-2489-4e0c-9fa6-47e554620128' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ad9d3c36-2489-4e0c-9fa6-47e554620128' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d541c288-ed09-474d-a564-041e1de0a0f1' class='xr-var-data-in' type='checkbox'><label for='data-d541c288-ed09-474d-a564-041e1de0a0f1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><pre>array([12. , 12.1, 12.2, ..., 79.8, 79.9, 80. ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-134.0 -133.9 ... -46.1 -46.0</div><input id='attrs-f4a74eda-1065-43c6-bf85-2d0757b072ce' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f4a74eda-1065-43c6-bf85-2d0757b072ce' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-909c8936-596f-41f0-b59c-eca30b20858d' class='xr-var-data-in' type='checkbox'><label for='data-909c8936-596f-41f0-b59c-eca30b20858d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>array([-134. , -133.9, -133.8, ...,  -46.2,  -46.1,  -46. ])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-f5488a66-0f14-4f21-bd85-beeb9ef7b5d5' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f5488a66-0f14-4f21-bd85-beeb9ef7b5d5' class='xr-section-summary' >Data variables: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>elevation</span></div><div class='xr-var-dims'>(time, latitude, longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-48dde1b3-6c4d-42d1-8c9a-b26ab30e07b1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-48dde1b3-6c4d-42d1-8c9a-b26ab30e07b1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e58a10d3-ef92-4e88-8cc4-a61e2ac9fc4f' class='xr-var-data-in' type='checkbox'><label for='data-e58a10d3-ef92-4e88-8cc4-a61e2ac9fc4f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>metres</dd></dl></div><div class='xr-var-data'><pre>[3599766 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>erodep</span></div><div class='xr-var-dims'>(time, latitude, longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-071aad25-e57d-4c95-92c4-83568f36e705' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-071aad25-e57d-4c95-92c4-83568f36e705' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ca14204e-0e35-4b7d-9bee-d7063d939ade' class='xr-var-data-in' type='checkbox'><label for='data-ca14204e-0e35-4b7d-9bee-d7063d939ade' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>metres</dd></dl></div><div class='xr-var-data'><pre>[3599766 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>precipitation</span></div><div class='xr-var-dims'>(time, latitude, longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-b042a95c-ac16-44d3-bd3e-8816da8b548c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b042a95c-ac16-44d3-bd3e-8816da8b548c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7b7da316-48de-488c-857b-087b0d6585ed' class='xr-var-data-in' type='checkbox'><label for='data-7b7da316-48de-488c-857b-087b0d6585ed' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m/yr</dd></dl></div><div class='xr-var-data'><pre>[3599766 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>drainageArea</span></div><div class='xr-var-dims'>(time, latitude, longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-0d581930-d0dc-4a6a-a710-d0464f027f92' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0d581930-d0dc-4a6a-a710-d0464f027f92' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0a5d7b3b-aa2c-4482-b7b9-32bd93f1c6dd' class='xr-var-data-in' type='checkbox'><label for='data-0a5d7b3b-aa2c-4482-b7b9-32bd93f1c6dd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m2</dd></dl></div><div class='xr-var-data'><pre>[3599766 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>basinID</span></div><div class='xr-var-dims'>(time, latitude, longitude)</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-391c85d7-ce36-43d0-b6f3-deaba3ad4215' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-391c85d7-ce36-43d0-b6f3-deaba3ad4215' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fdaf6ef5-39ce-4d4c-bfdd-6a1dfcd19fe7' class='xr-var-data-in' type='checkbox'><label for='data-fdaf6ef5-39ce-4d4c-bfdd-6a1dfcd19fe7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>int</dd></dl></div><div class='xr-var-data'><pre>[3599766 values with dtype=int32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-34920d33-cb90-4b54-8259-60d5d236a0c0' class='xr-section-summary-in' type='checkbox'  checked><label for='section-34920d33-cb90-4b54-8259-60d5d236a0c0' class='xr-section-summary' >Attributes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>gospl outputs</dd><dt><span>history :</span></dt><dd>Created Thu Apr  8 01:50:32 2021</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<p>By default the mesh is written in lon/lat (projection <a class="reference external" href="https://spatialreference.org/ref/epsg/wgs-84/">epsg:4326</a> as <code class="docutils literal notranslate"><span class="pre">gospl</span></code> is a global model).</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">rioxarray</span></code> library we have the ability to reproject the dataset in any other type of projection. Let’s reproject the dataset in <code class="docutils literal notranslate"><span class="pre">utm</span></code> coordinates:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">write_crs</span><span class="p">(</span><span class="mi">4326</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Default projection:&#39;</span><span class="p">,</span><span class="n">ds</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Estimated UTM projection:&#39;</span><span class="p">,</span><span class="n">ds</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">estimate_utm_crs</span><span class="p">())</span>
+<span class="n">ds_utm</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">reproject</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">estimate_utm_crs</span><span class="p">())</span>
+
+<span class="n">ds_utm</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Default projection: EPSG:4326
+Estimated UTM projection: EPSG:32615
+</pre></div>
+</div>
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:        (time: 6, x: 1255, y: 937)
+Coordinates:
+  * x              (x) float64 -4.36e+06 -4.352e+06 ... 6.225e+06 6.233e+06
+  * y              (y) float64 9.233e+06 9.224e+06 ... 1.334e+06 1.326e+06
+  * time           (time) float64 0.0 1e+04 2e+04 3e+04 4e+04 5e+04
+    spatial_ref    int64 0
+Data variables:
+    elevation      (time, y, x) float64 -9.999e+03 -9.999e+03 ... -9.999e+03
+    erodep         (time, y, x) float64 -9.999e+03 -9.999e+03 ... -9.999e+03
+    precipitation  (time, y, x) float64 -9.999e+03 -9.999e+03 ... -9.999e+03
+    drainageArea   (time, y, x) float64 -9.999e+03 -9.999e+03 ... -9.999e+03
+    basinID        (time, y, x) int32 -9999 -9999 -9999 ... -9999 -9999 -9999
+Attributes:
+    description:   gospl outputs
+    history:       Created Thu Apr  8 01:50:32 2021
+    grid_mapping:  spatial_ref</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-853be3d6-c588-4a67-ad84-942bfc96a3e4' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-853be3d6-c588-4a67-ad84-942bfc96a3e4' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 6</li><li><span class='xr-has-index'>x</span>: 1255</li><li><span class='xr-has-index'>y</span>: 937</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-23ad591e-507f-480e-9e37-869dc20788ff' class='xr-section-summary-in' type='checkbox'  checked><label for='section-23ad591e-507f-480e-9e37-869dc20788ff' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-4.36e+06 -4.352e+06 ... 6.233e+06</div><input id='attrs-ecc228cb-e595-4668-9c2d-c444055f8109' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ecc228cb-e595-4668-9c2d-c444055f8109' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8c72bdb9-f7fa-47f3-97e1-2e9246b7d954' class='xr-var-data-in' type='checkbox'><label for='data-8c72bdb9-f7fa-47f3-97e1-2e9246b7d954' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>x coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd><dt><span>units :</span></dt><dd>metre</dd></dl></div><div class='xr-var-data'><pre>array([-4360354.144943, -4351906.330887, -4343458.51683 , ...,  6216309.053557,
+        6224756.867613,  6233204.68167 ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>9.233e+06 9.224e+06 ... 1.326e+06</div><input id='attrs-483ea761-79fd-4de8-ba32-918440284642' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-483ea761-79fd-4de8-ba32-918440284642' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-429e827a-625c-400b-8b17-5716eaddf365' class='xr-var-data-in' type='checkbox'><label for='data-429e827a-625c-400b-8b17-5716eaddf365' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>y coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd><dt><span>units :</span></dt><dd>metre</dd></dl></div><div class='xr-var-data'><pre>array([9232797.160012, 9224349.345956, 9215901.531899, ..., 1342538.831418,
+       1334091.017362, 1325643.203306])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 1e+04 2e+04 3e+04 4e+04 5e+04</div><input id='attrs-901c1d0e-e575-4b58-94b9-482bed0564af' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-901c1d0e-e575-4b58-94b9-482bed0564af' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-55cd9bca-ed53-45ef-845a-f51ed2b12579' class='xr-var-data-in' type='checkbox'><label for='data-55cd9bca-ed53-45ef-845a-f51ed2b12579' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>days since 0000-01-01</dd><dt><span>calendar :</span></dt><dd>365_day</dd></dl></div><div class='xr-var-data'><pre>array([    0., 10000., 20000., 30000., 40000., 50000.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-e453101c-9da3-4925-9114-4a6bb0d6827b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e453101c-9da3-4925-9114-4a6bb0d6827b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3d9398c8-a340-4eab-958f-d8061d702c40' class='xr-var-data-in' type='checkbox'><label for='data-3d9398c8-a340-4eab-958f-d8061d702c40' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 15N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,-93],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32615&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>horizontal_datum_name :</span></dt><dd>World Geodetic System 1984</dd><dt><span>projected_crs_name :</span></dt><dd>WGS 84 / UTM zone 15N</dd><dt><span>grid_mapping_name :</span></dt><dd>transverse_mercator</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>0.0</dd><dt><span>longitude_of_central_meridian :</span></dt><dd>-93.0</dd><dt><span>false_easting :</span></dt><dd>500000.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>scale_factor_at_central_meridian :</span></dt><dd>0.9996</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 15N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,-93],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32615&quot;]]</dd><dt><span>GeoTransform :</span></dt><dd>-4364578.0519712195 8447.814056310064 0.0 9237021.067040086 0.0 -8447.814056310064</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-6e42de40-0b56-4b02-84a4-7777e1ec3c02' class='xr-section-summary-in' type='checkbox'  checked><label for='section-6e42de40-0b56-4b02-84a4-7777e1ec3c02' class='xr-section-summary' >Data variables: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>elevation</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-9.999e+03 ... -9.999e+03</div><input id='attrs-10ea853d-bb4e-49f2-aa51-4e670988082a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-10ea853d-bb4e-49f2-aa51-4e670988082a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-349a1aaa-074c-4667-b90e-27a66566d1c7' class='xr-var-data-in' type='checkbox'><label for='data-349a1aaa-074c-4667-b90e-27a66566d1c7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>metres</dd><dt><span>grid_mapping :</span></dt><dd>spatial_ref</dd><dt><span>_FillValue :</span></dt><dd>-9999.0</dd></dl></div><div class='xr-var-data'><pre>array([[[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]],
+
+       [[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]],
+
+       [[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+...
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]],
+
+       [[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]],
+
+       [[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>erodep</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-9.999e+03 ... -9.999e+03</div><input id='attrs-5ef182ef-d930-473a-9d54-ed9d6f6c1d48' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5ef182ef-d930-473a-9d54-ed9d6f6c1d48' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0e743eb9-893f-4a3f-8ea0-c8e89ab0ed3c' class='xr-var-data-in' type='checkbox'><label for='data-0e743eb9-893f-4a3f-8ea0-c8e89ab0ed3c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>metres</dd><dt><span>grid_mapping :</span></dt><dd>spatial_ref</dd><dt><span>_FillValue :</span></dt><dd>-9999.0</dd></dl></div><div class='xr-var-data'><pre>array([[[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]],
+
+       [[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]],
+
+       [[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+...
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]],
+
+       [[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]],
+
+       [[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>precipitation</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-9.999e+03 ... -9.999e+03</div><input id='attrs-fdfa26f9-9509-4a9e-bfca-f9701d8e53d9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fdfa26f9-9509-4a9e-bfca-f9701d8e53d9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d64519d5-dd0e-46b6-9ea8-b84dfee64b75' class='xr-var-data-in' type='checkbox'><label for='data-d64519d5-dd0e-46b6-9ea8-b84dfee64b75' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m/yr</dd><dt><span>grid_mapping :</span></dt><dd>spatial_ref</dd><dt><span>_FillValue :</span></dt><dd>-9999.0</dd></dl></div><div class='xr-var-data'><pre>array([[[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]],
+
+       [[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]],
+
+       [[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+...
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]],
+
+       [[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]],
+
+       [[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>drainageArea</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-9.999e+03 ... -9.999e+03</div><input id='attrs-c9abfbf6-fd0d-4b22-af54-f9a675cfab7a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c9abfbf6-fd0d-4b22-af54-f9a675cfab7a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3105d615-21b2-4b45-a60f-ced28f657a0d' class='xr-var-data-in' type='checkbox'><label for='data-3105d615-21b2-4b45-a60f-ced28f657a0d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>m2</dd><dt><span>grid_mapping :</span></dt><dd>spatial_ref</dd><dt><span>_FillValue :</span></dt><dd>-9999.0</dd></dl></div><div class='xr-var-data'><pre>array([[[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]],
+
+       [[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]],
+
+       [[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+...
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]],
+
+       [[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]],
+
+       [[-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        ...,
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.],
+        [-9999., -9999., -9999., ..., -9999., -9999., -9999.]]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>basinID</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>-9999 -9999 -9999 ... -9999 -9999</div><input id='attrs-88bc454d-b476-417c-94e8-51e7986a14b5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-88bc454d-b476-417c-94e8-51e7986a14b5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-93d3ddc7-4650-48df-a4d9-f549a851084e' class='xr-var-data-in' type='checkbox'><label for='data-93d3ddc7-4650-48df-a4d9-f549a851084e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>int</dd><dt><span>grid_mapping :</span></dt><dd>spatial_ref</dd><dt><span>_FillValue :</span></dt><dd>-9999</dd></dl></div><div class='xr-var-data'><pre>array([[[-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        ...,
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999]],
+
+       [[-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        ...,
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999]],
+
+       [[-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        ...,
+...
+        ...,
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999]],
+
+       [[-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        ...,
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999]],
+
+       [[-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        ...,
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999],
+        [-9999, -9999, -9999, ..., -9999, -9999, -9999]]], dtype=int32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-080964e3-36a1-400d-97c0-d3bf8946a41b' class='xr-section-summary-in' type='checkbox'  checked><label for='section-080964e3-36a1-400d-97c0-d3bf8946a41b' class='xr-section-summary' >Attributes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>gospl outputs</dd><dt><span>history :</span></dt><dd>Created Thu Apr  8 01:50:32 2021</dd><dt><span>grid_mapping :</span></dt><dd>spatial_ref</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<p>We will now take a specific time step using the <code class="docutils literal notranslate"><span class="pre">isel</span></code> function (here we chose the last time step) and extract the elevation data variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Taking the last time step of the elevation array</span>
+<span class="n">elevArray</span> <span class="o">=</span> <span class="n">ds_utm</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])[</span><span class="s2">&quot;elevation&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">,:,:]</span>
+
+<span class="c1"># Assigning a value of -9999.0 to all point below sea-level</span>
+<span class="n">elevArray</span> <span class="o">=</span> <span class="n">elevArray</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">elevArray</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">,</span> <span class="n">other</span><span class="o">=-</span><span class="mf">9999.0</span><span class="p">)</span>
+
+<span class="c1"># Export to geotiff</span>
+<span class="n">tifout</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">out_path</span><span class="p">,</span> <span class="s2">&quot;GoMtime5.tif&quot;</span><span class="p">)</span>
+<span class="n">elevArray</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">to_raster</span><span class="p">(</span><span class="n">tifout</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="using-pysheds-library-for-watershed-delineation">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">pysheds</span></code> library for watershed delineation<a class="headerlink" href="#using-pysheds-library-for-watershed-delineation" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Information regarding the <code class="docutils literal notranslate"><span class="pre">pysheds</span></code> library can be found on the project github <a class="reference external" href="https://github.com/mdbartos/pysheds">page</a>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plotraster</span><span class="p">(</span><span class="n">grd</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">nd</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">v_min</span><span class="p">,</span> <span class="n">v_max</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Simple plotting function to visualise the raster dataset</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span> <span class="o">&lt;=</span> <span class="n">nd</span><span class="p">))</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">grd</span><span class="o">.</span><span class="n">extent</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">v_min</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">v_max</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We first read the DEM data (<em>i.e.</em> the geotiff file created above):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">Grid</span><span class="o">.</span><span class="n">from_raster</span><span class="p">(</span><span class="n">tifout</span><span class="p">,</span> <span class="n">data_name</span><span class="o">=</span><span class="s1">&#39;dem&#39;</span><span class="p">)</span>
+<span class="n">dem</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;dem&#39;</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=-</span><span class="mf">9999.0</span><span class="p">)</span>
+<span class="n">dem</span><span class="p">[</span><span class="n">dem</span> <span class="o">==</span> <span class="o">-</span><span class="mi">9999</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+
+<span class="c1"># Compute the depressions</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">fill_depressions</span><span class="p">(</span><span class="s1">&#39;dem&#39;</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;filled&#39;</span><span class="p">,</span>
+                      <span class="n">nodata_in</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">nodata_out</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span>
+<span class="n">filled</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;filled&#39;</span><span class="p">,</span> <span class="n">nodata</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># Resolve flat areas</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">resolve_flats</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;filled&#39;</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;demnoflat&#39;</span><span class="p">,</span>
+                   <span class="n">nodata_in</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">nodata_out</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span>
+<span class="n">demnoflat</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;demnoflat&#39;</span><span class="p">,</span> <span class="n">nodata</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># Compute the flow direction</span>
+<span class="n">dirmap</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">flowdir</span><span class="p">(</span><span class="s1">&#39;demnoflat&#39;</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;d8&#39;</span><span class="p">,</span> <span class="n">dirmap</span><span class="o">=</span><span class="n">dirmap</span><span class="p">,</span>
+             <span class="n">nodata_in</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">nodata_out</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">pits</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">flats</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span>
+<span class="n">d8</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;d8&#39;</span><span class="p">,</span> <span class="n">nodata</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># Compute the flow accumulation</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">accumulation</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;d8&#39;</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;flowd8&#39;</span><span class="p">)</span>
+<span class="n">flowd8</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;flowd8&#39;</span><span class="p">,</span> <span class="n">nodata</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">flowd8</span><span class="p">[</span><span class="n">d8</span> <span class="o">==</span> <span class="o">-</span><span class="mi">9999</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s visualise the generated outputs with our plotting function <code class="docutils literal notranslate"><span class="pre">plotraster</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotraster</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">dem</span><span class="p">,</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="s1">&#39;Elevation (m)&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="s1">&#39;gist_earth&#39;</span><span class="p">)</span>
+<span class="n">plotraster</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">demnoflat</span> <span class="o">-</span> <span class="n">dem</span><span class="p">,</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="s1">&#39;fill no flat (m)&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;RdBu_r&#39;</span><span class="p">)</span>
+<span class="n">plotraster</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">d8</span><span class="p">,</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="s1">&#39;flow direction&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;Accent_r&#39;</span><span class="p">)</span>
+<span class="n">plotraster</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">flowd8</span><span class="p">,</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="s1">&#39;flow accumulation&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">flowd8</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span> <span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/river_catchment_19_0.svg" src="../_images/river_catchment_19_0.svg" /><img alt="../_images/river_catchment_19_1.svg" src="../_images/river_catchment_19_1.svg" /><img alt="../_images/river_catchment_19_2.svg" src="../_images/river_catchment_19_2.svg" /><img alt="../_images/river_catchment_19_3.svg" src="../_images/river_catchment_19_3.svg" /></div>
+</div>
+</div>
+<div class="section" id="extracting-specific-outlets">
+<h2>Extracting specific outlets<a class="headerlink" href="#extracting-specific-outlets" title="Permalink to this headline">¶</a></h2>
+<p>To extract specific catchments, <code class="docutils literal notranslate"><span class="pre">pysheds</span></code> requires the position of the outlet.</p>
+<p>Here we show how to extract some specific outlets based on the flow accumulation values.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The approach here could be automatised to make it easier for the user…</p>
+</div>
+<p>We start by finding the maximum flow accumulation in the entire raster and we will use the corresponding catchment for our analyse.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the point ID corresponding to the maximum flow accumulation value</span>
+<span class="n">outletID</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">flowd8</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="o">==</span> <span class="n">flowd8</span><span class="o">.</span><span class="n">max</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Get the corresponding point coordinate</span>
+<span class="n">outletPt</span> <span class="o">=</span> <span class="n">dem</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">outletID</span><span class="p">,:][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Define this first outlet by x1,y1</span>
+<span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">outletPt</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">outletPt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now extract a second outlet corrsponding to the biggest river entering the Gulf of Mexico:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the point ID corresponding to the maximum flow accumulation value in the Gulf of Mexico</span>
+<span class="n">outletID</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">flowd8</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="o">==</span> <span class="n">flowd8</span><span class="p">[</span><span class="mi">600</span><span class="p">:</span><span class="mi">800</span><span class="p">,</span><span class="mi">500</span><span class="p">:</span><span class="mi">700</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Get the corresponding point coordinate</span>
+<span class="n">outletPt</span> <span class="o">=</span> <span class="n">dem</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="n">outletID</span><span class="p">,:][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Define this first outlet by x2,y2</span>
+<span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">outletPt</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">outletPt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s see where these 2 outlets are:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">flowd8</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">flowd8</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">))</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">grid</span><span class="o">.</span><span class="n">extent</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">flowd8</span><span class="p">)</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
+         <span class="n">markeredgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">markeredgewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
+         <span class="n">markeredgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">markeredgewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;flow accumulation&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/river_catchment_25_0.svg" src="../_images/river_catchment_25_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="get-corresponding-catchments">
+<h2>Get corresponding catchments<a class="headerlink" href="#get-corresponding-catchments" title="Permalink to this headline">¶</a></h2>
+<p>We now define a function <code class="docutils literal notranslate"><span class="pre">getCatchment</span></code> which extract river network (up to a specified flow accumulation <code class="docutils literal notranslate"><span class="pre">threshold</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">getCatchment</span><span class="p">(</span><span class="n">geotiff</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Extract a specific river network based on outlet position and flow accumulation threshold.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="n">grd</span> <span class="o">=</span> <span class="n">Grid</span><span class="o">.</span><span class="n">from_raster</span><span class="p">(</span><span class="n">geotiff</span><span class="p">,</span> <span class="n">data_name</span><span class="o">=</span><span class="s1">&#39;dem&#39;</span><span class="p">)</span>
+
+    <span class="n">grd</span><span class="o">.</span><span class="n">fill_depressions</span><span class="p">(</span><span class="s1">&#39;dem&#39;</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;filled&#39;</span><span class="p">,</span>
+                          <span class="n">nodata_in</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">nodata_out</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span>
+    <span class="n">grd</span><span class="o">.</span><span class="n">resolve_flats</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;filled&#39;</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;inflated_dem&#39;</span><span class="p">)</span>
+
+    <span class="n">dirmap</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">grd</span><span class="o">.</span><span class="n">flowdir</span><span class="p">(</span><span class="s1">&#39;inflated_dem&#39;</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;dir&#39;</span><span class="p">,</span> <span class="n">dirmap</span><span class="o">=</span><span class="n">dirmap</span><span class="p">,</span>
+                  <span class="n">nodata_in</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">nodata_out</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> 
+                  <span class="n">pits</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">flats</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span>
+    
+    <span class="n">grd</span><span class="o">.</span><span class="n">accumulation</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;dir&#39;</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;acc2&#39;</span><span class="p">)</span>
+
+    <span class="n">acc2</span> <span class="o">=</span> <span class="n">grd</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;acc2&#39;</span><span class="p">,</span> <span class="n">nodata</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">acc2</span><span class="p">[</span><span class="n">acc2</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span>
+    
+    <span class="n">grd</span><span class="o">.</span><span class="n">catchment</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;dir&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;catch&#39;</span><span class="p">,</span>
+                    <span class="n">recursionlimit</span><span class="o">=</span><span class="mi">15000</span><span class="p">,</span> <span class="n">xytype</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">)</span>
+
+    
+    <span class="n">grd</span><span class="o">.</span><span class="n">clip_to</span><span class="p">(</span><span class="s1">&#39;catch&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">grd</span><span class="o">.</span><span class="n">accumulation</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;catch&#39;</span><span class="p">,</span> <span class="n">out_name</span><span class="o">=</span><span class="s1">&#39;acc&#39;</span><span class="p">)</span>
+    
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">grd</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;acc&#39;</span><span class="p">,</span> <span class="n">nodata</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">acc</span><span class="p">[</span><span class="n">acc</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span>
+    
+    <span class="n">branches</span> <span class="o">=</span> <span class="n">grd</span><span class="o">.</span><span class="n">extract_river_network</span><span class="p">(</span><span class="s1">&#39;catch&#39;</span><span class="p">,</span> <span class="s1">&#39;acc&#39;</span><span class="p">,</span> <span class="n">dirmap</span><span class="o">=</span><span class="n">dirmap</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span> 
+                                       <span class="n">nodata_in</span><span class="o">=-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">routing</span><span class="o">=</span><span class="s1">&#39;d8&#39;</span><span class="p">,</span>
+                                       <span class="n">apply_mask</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">acc</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">acc</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">))</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">grd</span><span class="o">.</span><span class="n">extent</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">acc</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">markeredgewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;flow accumulation&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="n">tree</span> <span class="o">=</span> <span class="n">spatial</span><span class="o">.</span><span class="n">cKDTree</span><span class="p">(</span><span class="n">dem</span><span class="o">.</span><span class="n">coords</span><span class="p">,</span> <span class="n">leafsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    
+    <span class="n">branch_df</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">nbbranches</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">branches</span><span class="p">[</span><span class="s1">&#39;features&#39;</span><span class="p">])</span>
+    
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nbbranches</span><span class="p">):</span>
+        <span class="n">branch</span> <span class="o">=</span> <span class="n">branches</span><span class="p">[</span><span class="s1">&#39;features&#39;</span><span class="p">][</span><span class="n">b</span><span class="p">]</span>
+        <span class="n">branchXY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">branch</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">][</span><span class="s1">&#39;coordinates&#39;</span><span class="p">])</span>
+        <span class="n">branchXY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">branchXY</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">dist</span><span class="p">,</span> <span class="nb">id</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">branchXY</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">elev</span> <span class="o">=</span> <span class="n">demnoflat</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[</span><span class="nb">id</span><span class="p">]</span>
+        <span class="n">fa</span> <span class="o">=</span> <span class="n">acc2</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[</span><span class="nb">id</span><span class="p">]</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">branchXY</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">branchXY</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> 
+                          <span class="n">elev</span><span class="p">,</span> <span class="n">fa</span><span class="p">))</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+                          <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;elev&#39;</span><span class="p">,</span><span class="s1">&#39;fa&#39;</span><span class="p">])</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">fa</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">9999</span><span class="p">]</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">xx</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+        <span class="n">yy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="n">xx</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">-</span><span class="n">xx</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="n">yy</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">-</span><span class="n">yy</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">step_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">dy</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">cumulative_distance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(([</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">step_size</span><span class="p">)))</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;dist&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cumulative_distance</span>
+
+        <span class="n">branch_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+        
+    
+    <span class="n">endbranch</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">maxfa</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10000</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nbbranches</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">branch_df</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">.</span><span class="n">fa</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">maxfa</span><span class="p">:</span>
+            <span class="n">maxfa</span> <span class="o">=</span> <span class="n">branch_df</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">.</span><span class="n">fa</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">endbranch</span> <span class="o">=</span> <span class="n">b</span>
+            
+    <span class="n">newdf</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">newdf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">branch_df</span><span class="p">[</span><span class="n">endbranch</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nbbranches</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">b</span> <span class="o">!=</span> <span class="n">endbranch</span><span class="p">:</span>
+            <span class="n">newdf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">branch_df</span><span class="p">[</span><span class="n">b</span><span class="p">])</span>
+        
+    <span class="k">return</span> <span class="n">branches</span><span class="p">,</span> <span class="n">newdf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We call the function for the 2 outlets that were defined previously. The function returns 2 variables:</p>
+<ol class="simple">
+<li><p>a dictionnary containing the geometry and coordinates of the main rivers</p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> dataframe containing for each river the associated flow and elevation information</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">branches1</span><span class="p">,</span> <span class="n">bdf1</span> <span class="o">=</span> <span class="n">getCatchment</span><span class="p">(</span><span class="n">geotiff</span><span class="o">=</span><span class="n">tifout</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y1</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">branches2</span><span class="p">,</span> <span class="n">bdf2</span> <span class="o">=</span> <span class="n">getCatchment</span><span class="p">(</span><span class="n">geotiff</span><span class="o">=</span><span class="n">tifout</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y2</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/river_catchment_29_0.svg" src="../_images/river_catchment_29_0.svg" /><img alt="../_images/river_catchment_29_1.svg" src="../_images/river_catchment_29_1.svg" /></div>
+</div>
+<div class="section" id="plotting-river-networks">
+<h3>Plotting river networks<a class="headerlink" href="#plotting-river-networks" title="Permalink to this headline">¶</a></h3>
+<p>The river networks can be obtained directly from the previous function first variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plotBranch</span><span class="p">(</span><span class="n">branchnb</span><span class="p">):</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="n">branchnb</span><span class="p">[</span><span class="s1">&#39;features&#39;</span><span class="p">]:</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">branch</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">][</span><span class="s1">&#39;coordinates&#39;</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">line</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">line</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotBranch</span><span class="p">(</span><span class="n">branches1</span><span class="p">)</span>
+<span class="n">plotBranch</span><span class="p">(</span><span class="n">branches2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/river_catchment_32_0.svg" src="../_images/river_catchment_32_0.svg" /><img alt="../_images/river_catchment_32_1.svg" src="../_images/river_catchment_32_1.svg" /></div>
+</div>
+</div>
+<div class="section" id="longitudinal-profiles">
+<h3>Longitudinal profiles<a class="headerlink" href="#longitudinal-profiles" title="Permalink to this headline">¶</a></h3>
+<p>The second variable can be used to extract river longitudinal profile. To do so we define a new function <code class="docutils literal notranslate"><span class="pre">combineBranch</span></code> which connect each individual trunk together:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">combineBranch</span><span class="p">(</span><span class="n">branch_df</span><span class="p">):</span>
+    
+    <span class="n">check</span> <span class="o">=</span> <span class="kc">True</span>
+    
+    <span class="n">pp</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">nbbranches</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">branch_df</span><span class="p">)</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">check</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nbbranches</span><span class="p">):</span>
+            <span class="n">row1</span> <span class="o">=</span> <span class="n">branch_df</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">dist1</span> <span class="o">=</span> <span class="n">row1</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">row1</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">row1</span><span class="o">.</span><span class="n">dist</span>
+
+            <span class="n">lastrow</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">branch_df</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">xend</span><span class="p">,</span> <span class="n">yend</span><span class="p">,</span> <span class="n">distend</span> <span class="o">=</span> <span class="n">lastrow</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lastrow</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">lastrow</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="k">for</span> <span class="n">nextb</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nbbranches</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">nextb</span> <span class="o">!=</span> <span class="n">b</span><span class="p">:</span>
+                    <span class="n">firstrow</span> <span class="o">=</span> <span class="n">branch_df</span><span class="p">[</span><span class="n">nextb</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">xstart</span><span class="p">,</span> <span class="n">ystart</span><span class="p">,</span> <span class="n">diststart</span> <span class="o">=</span> <span class="n">firstrow</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">firstrow</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">firstrow</span><span class="o">.</span><span class="n">dist</span>
+                    <span class="n">changed</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="k">if</span> <span class="n">diststart</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xstart</span><span class="o">-</span><span class="n">xend</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ystart</span><span class="o">-</span><span class="n">yend</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                                <span class="n">branch_df</span><span class="p">[</span><span class="n">nextb</span><span class="p">]</span><span class="o">.</span><span class="n">dist</span> <span class="o">+=</span> <span class="n">distend</span>
+                                <span class="n">changed</span> <span class="o">=</span> <span class="kc">True</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="k">if</span> <span class="n">dist1</span> <span class="o">&gt;</span> <span class="mf">0.</span><span class="p">:</span>
+                                    <span class="n">branch_df</span><span class="p">[</span><span class="n">nextb</span><span class="p">]</span><span class="o">.</span><span class="n">dist</span> <span class="o">+=</span> <span class="n">distend</span>
+                                    <span class="n">changed</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">changed</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xstart</span><span class="o">-</span><span class="n">x1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ystart</span><span class="o">-</span><span class="n">y1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
+                                <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                                    <span class="n">branch_df</span><span class="p">[</span><span class="n">nextb</span><span class="p">]</span><span class="o">.</span><span class="n">dist</span> <span class="o">+=</span> <span class="mf">0.0001</span>
+                                <span class="k">else</span><span class="p">:</span>
+                                    <span class="n">branch_df</span><span class="p">[</span><span class="n">nextb</span><span class="p">]</span><span class="o">.</span><span class="n">dist</span> <span class="o">+=</span> <span class="n">dist1</span>            
+        
+        <span class="n">check</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nbbranches</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">branch_df</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dist</span> <span class="o">==</span> <span class="mf">0.</span><span class="p">:</span>
+                <span class="n">check</span> <span class="o">=</span> <span class="kc">True</span>
+                
+        
+    <span class="k">return</span> <span class="n">branch_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s call the above function for each catchment:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ndf1</span> <span class="o">=</span> <span class="n">combineBranch</span><span class="p">(</span><span class="n">branch_df</span><span class="o">=</span><span class="n">bdf1</span><span class="p">)</span>
+<span class="n">ndf2</span> <span class="o">=</span> <span class="n">combineBranch</span><span class="p">(</span><span class="n">branch_df</span><span class="o">=</span><span class="n">bdf2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now plot the longitudinal profiles:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plotProfile</span><span class="p">(</span><span class="n">dataframe</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Function for plotting the longitudinal profile.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataframe</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">distance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">dataframe</span><span class="p">[</span><span class="n">branch</span><span class="p">]</span><span class="o">.</span><span class="n">dist</span><span class="p">)</span>
+        <span class="n">elev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">dataframe</span><span class="p">[</span><span class="n">branch</span><span class="p">]</span><span class="o">.</span><span class="n">elev</span><span class="p">)</span>
+
+        <span class="n">xnew</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">distance</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">distance</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">10</span><span class="p">)</span> 
+        <span class="n">spl</span> <span class="o">=</span> <span class="n">make_interp_spline</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">elev</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># type: BSpline</span>
+        <span class="n">elev_smooth</span> <span class="o">=</span> <span class="n">spl</span><span class="p">(</span><span class="n">xnew</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xnew</span><span class="p">,</span> <span class="n">elev_smooth</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotProfile</span><span class="p">(</span><span class="n">ndf2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/river_catchment_39_0.svg" src="../_images/river_catchment_39_0.svg" /></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Recipe1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="export_format.html" title="previous page">Outputs export</a>
+    <a class='right-next' id="next-link" href="interactive_plots.html" title="next page">Interactive application</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By the <a href="https://earthcolab.org/#slide-0" target="_blank">EarthCodeLab Group</a> for the STELLAR Project - Program 3<br/>
+        
+            &copy; Copyright 2021-2024.<br/>
+          <div class="extra_footer">
+            <p>
+<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+  <img align="right" class="margin" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by.svg" width="88px">
+</a>
+This Jupyter Book and all its content are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0) license</a>.
+</p>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
