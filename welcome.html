@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Guide &#8212; STELLAR SFM</title>
+    <title>gospl recipies &#8212; STELLAR SFM</title>
     
   <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -76,6 +76,8 @@
         <div class="navbar-brand-box">
 <a class="navbar-brand text-wrap" href="index.html">
   
+  <img src="_static/FA.png" class="logo" alt="logo">
+  
   
   <h1 class="site-logo" id="site-title">STELLAR SFM</h1>
   
@@ -101,22 +103,22 @@
    Define forcing parameters
   </a>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1">
   <a class="reference internal" href="GoM/run_model.html">
    Modelling landscape evolution
   </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="GoM/export_format.html">
+   Exporting
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     gospl
+    </span>
+   </code>
+   outputs
+  </a>
   <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="GoM/export_format.html">
-     Exporting
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       gospl
-      </span>
-     </code>
-     outputs
-    </a>
-   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="GoM/river_catchment.html">
      Extract catchment characteristics
@@ -237,14 +239,46 @@
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   User Guide
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#welcome">
-   Welcome
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-use-these-recipies">
+   How to use these recipies
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recommended-installation">
+   Recommended installation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accessing-the-command-line">
+     Accessing the command line
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lightweight-alternative-miniconda">
+     Lightweight alternative: Miniconda
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#managing-environments-with-conda">
+     Managing Environments with Conda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gospl-recipies-environment">
+   gospl recipies environment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-more-packages">
+   Installing more packages
   </a>
  </li>
 </ul>
@@ -259,23 +293,256 @@
         
               <div>
                 
-  <div class="section" id="user-guide">
-<h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
-<p>This user guide covers essential features of <code class="docutils literal notranslate"><span class="pre">gospl</span></code>, mostly in the form of interactive Jupyter notebooks and Python scripts. Reading this guide, you will learn:</p>
+  <div class="section" id="gospl-recipies">
+<h1>gospl recipies<a class="headerlink" href="#gospl-recipies" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<div class="margin figure align-default" id="earthcolab-figure">
+<a class="reference internal image-reference" href="_images/earthcolab.png"><img alt="_images/earthcolab.png" src="_images/earthcolab.png" style="width: 175px;" /></a>
+</div>
+<div class="margin figure align-default" id="usyd-figure">
+<a class="reference internal image-reference" href="_images/USydney-logo.jpg"><img alt="_images/USydney-logo.jpg" src="_images/USydney-logo.jpg" style="width: 170px;" /></a>
+</div>
+<div class="important admonition">
+<p class="admonition-title">What is this?</p>
+<p>This online documentation provides some examples of <em>pre-</em> and <em>post-</em> processing techniques used to run different <strong><a class="reference external" href="https://gospl.readthedocs.io/en/latest/index.html#module-gospl">gospl</a></strong> simulations and extract useful information from them.</p>
+</div>
+<p><strong><a class="reference external" href="https://gospl.readthedocs.io/en/latest/index.html#module-gospl">gospl</a></strong> (short for <code class="docutils literal notranslate"><span class="pre">Global</span> <span class="pre">Scalable</span> <span class="pre">Paleo</span> <span class="pre">Landscape</span> <span class="pre">Evolution</span></code>) is an open source, GPL-licensed library providing a scalable parallelised Python-based numerical model to simulate landscapes and basins reconstruction at global scale.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/earth.png"><img alt="gospl" class="bg-primary mb-1 align-center" src="_images/earth.png" style="width: 600px;" /></a>
+<p>For an overview of <strong><a class="reference external" href="https://gospl.readthedocs.io/en/latest/index.html#module-gospl">gospl</a></strong> functionalities readers are invited to go through the online documentation:</p>
+<ol class="simple">
+<li><p>the <a class="reference external" href="https://gospl.readthedocs.io/en/latest/tech_guide/index.html#tech-guide">technical guide</a> provides in-depth information on the underlying physics,</p></li>
+<li><p>the <a class="reference external" href="https://gospl.readthedocs.io/en/latest/getting_started/index.html#getting-started">getting started</a> pages shows how to install the code itself, but the following sections will provide additional information on that as well,</p></li>
+<li><p>the complete list of input file parameters is describe in the <a class="reference external" href="https://gospl.readthedocs.io/en/latest/user_guide/inputfile.html#inputfile">user guide</a> section,</p></li>
+<li><p>the <a class="reference external" href="https://gospl.readthedocs.io/en/latest/api_ref/index.html#api-ref">API reference</a> describes how methods work and functions have been declared.</p></li>
+</ol>
+<div class="dropdown admonition">
+<p class="admonition-title">Citing</p>
+<p>To cite <code class="docutils literal notranslate"><span class="pre">gospl</span></code> please use following <a class="reference external" href="https://doi.org/10.21105/joss.XXXXX">software paper</a>
+published in the JOSS.</p>
+<p>Salles et al. (2020) <code class="docutils literal notranslate"><span class="pre">gospl:</span> <span class="pre">Global</span> <span class="pre">Scalable</span> <span class="pre">Paleo</span> <span class="pre">Landscape</span> <span class="pre">Evolution</span></code>, Journal of Open
+Source Software, 5(56), p. 2804. doi: 10.21105/joss.02804.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>@article{salles_2020,
+    author={Salles, Tristan and Mallard, Claire and Zahirovic, Sabin},
+    title={gospl: Global Scalable Paleo Landscape Evolution},
+    journal={Journal of Open Source Software},
+    year={2020},
+    volume={5},
+    number={56},
+    pages={2804},
+    DOI={10.21105/joss.02804}
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="how-to-use-these-recipies">
+<h2>How to use these recipies<a class="headerlink" href="#how-to-use-these-recipies" title="Permalink to this headline">¶</a></h2>
+<p>This documentation is written as an online companion to <strong><a class="reference external" href="https://gospl.readthedocs.io/en/latest/index.html#module-gospl">gospl</a></strong> simulation. The examples and <em>pre-</em> and <em>post-</em> processing methods are actualised on the go, as we develop them.</p>
+<p>We are trying to write them in such a way that they are quickly understandable and modifiable to fit with your specific simulation. If you are starting to use <strong><a class="reference external" href="https://gospl.readthedocs.io/en/latest/index.html#module-gospl">gospl</a></strong>, we strongly recommend to go through several of these examples to familiarise yourself with the code capabilities and input/output formats.</p>
+<p>The notes are written in <a class="reference external" href="https://jupyter-notebook.readthedocs.io/">Jupyter Notebooks</a>. If you want to run the examples, you can:</p>
+<div class="margin figure align-default" id="binder-figure">
+<img alt="_images/launch_binder.png" src="_images/launch_binder.png" />
+</div>
 <ul class="simple">
-<li><p>data structure used in gospl input file,</p></li>
-<li><p>how to generate initial conditions like topography, precipitation and tectonic maps to force a simulation,</p></li>
-<li><p>how to extract some of the output from the model results to visualise them in Jupyter notebooks,</p></li>
-<li><p>how to run sequence of backward/forward gospl models using Python functions,</p></li>
+<li><p>run the notebooks online in an interactive window, by clicking on the <strong>“Launch Binder”</strong> button on the top-right of this page.</p></li>
+<li><p>download the jupyter notebooks from the <a class="reference external" href="https://github.com/Geodels/stellar-sfm">recipies repository</a> and run them on your computer.</p></li>
 </ul>
-<p>Notebooks cover just a small selection of functions as an illustration of principles. For a full overview of <code class="docutils literal notranslate"><span class="pre">gospl</span></code> capabilities, head to the <a class="reference external" href="https://gospl.readthedocs.io/en/latest/api_ref/index.html">API reference</a>.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">MyBinder</p>
+<p><a class="reference external" href="https://mybinder.org">MyBinder</a> is a service that allows us to provide online computing environments in which the course notebooks can be read and executed. This is a fantastic service that runs on the cloud - each time a user clicks on the top binder link, a so-called “virtual machine” is spun-up and made accessible via the web-browser.</p>
+<p><strong>These binder environments are safe, anonymous, and temporary</strong>. Temporary means non-persistent: if you close the tab in which the environment was opened, it is lost. If you open the link again, a new environment will be created for you, without your previous modifications. Therefore, if you want to save your work for later (i.e. to be able to upload it in a future binder session), don’t forget to download the files you modified before leaving. <strong>Be aware that a Binder environment will be shut down after 10 minutes of inactivity</strong> (leaving your tab/window open will count as “activity” only if visible, i.e. leaving the tab open but navigating elsewhere will eventually shut down your session).</p>
+<p>MyBinder is a free service provided generously by the Binder and Jupyter communities (<a class="reference external" href="https://mybinder.readthedocs.io/en/latest/faq.html">FAQ</a>). As such, you can expect some waiting time at launch and relatively limited computer resources. However, these resources should be more than enough to run the course notebooks at home or in class.</p>
 </div>
-<div class="section" id="welcome">
-<h1>Welcome<a class="headerlink" href="#welcome" title="Permalink to this headline">¶</a></h1>
-<div class="margin figure align-default" id="margin-figure">
-<img alt="_images/USydney-logo.jpg" src="_images/USydney-logo.jpg" />
 </div>
+<div class="section" id="recommended-installation">
+<h2>Recommended installation<a class="headerlink" href="#recommended-installation" title="Permalink to this headline">¶</a></h2>
+<p>The easiest way to set up a full-stack scientific Python deployment is to use a Python distribution. This is an installation of Python with a set of curated packages which are guaranteed to work together.</p>
+<p>To start using the <code class="docutils literal notranslate"><span class="pre">gospl</span></code> recipies presented in this documentation, we recommend the <strong><a class="reference external" href="https://www.anaconda.com/download/">Anaconda Python Distribution</a></strong>. Follow the previous link to obtain a one-click installer for Linux, Mac, or Windows. (Make sure you select the <strong>Python 3</strong> installer) In addition to the packages themselves, Anaconda includes a graphical utility to help manage any packages you may want to install which are not already included in the default inclusion list.</p>
+<div class="section" id="accessing-the-command-line">
+<h3>Accessing the command line<a class="headerlink" href="#accessing-the-command-line" title="Permalink to this headline">¶</a></h3>
+<p>These notes assume you have access to a Unix command line to type in shell commands. For Linux and MacOS users, you can access the command line by opening the terminal program. It’s more difficult for Windows users. For Windows users, you should first install Anaconda (described above) or Miniconda (described below), which gives you access to the “Anaconda Prompt” desktop app. (Instructions for this are given on the <a class="reference external" href="https://docs.anaconda.com/anaconda/user-guide/getting-started/#write-a-python-program-using-anaconda-prompt-or-terminal">Andaconda Website</a>.) From the Anaconda Prompt, you should be able to run <code class="docutils literal notranslate"><span class="pre">conda</span></code> and other shell commands.</p>
+</div>
+<div class="section" id="lightweight-alternative-miniconda">
+<h3>Lightweight alternative: Miniconda<a class="headerlink" href="#lightweight-alternative-miniconda" title="Permalink to this headline">¶</a></h3>
+<p>If you are installing python on a remote machine via ssh, or you simply don’t want to download a huge file like the Anaconda Python Distribution, there is a lightweight alternative installation method.</p>
+<ul>
+<li><p><strong>Obtain a minimal Python installer</strong> We recommend the <a class="reference external" href="https://conda.io/miniconda.html">Miniconda</a> installer; this provides a Python install for your operating system, plus the conda package manager. This way, you can only install the packages you <em>want</em>.</p></li>
+<li><p><strong>Run the installer</strong> You’ll probably need to do this from the command line, <em>e.g.</em></p>
+<p>$ sh Miniconda3-latest-MacOSX-x86_64.sh</p>
+</li>
+</ul>
+<p>Follow the instructions; you can choose where to place the installation ( preferably somewhere you have write access without super-user/root access, like your home directory). At the end of this process, add this path to your <em>rc configuration</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ echo &quot;. $HOME/miniconda3/etc/profile.d/conda.sh&quot; &gt; ~/.bashrc
+</pre></div>
+</div>
+<p>If you do this, your <code class="docutils literal notranslate"><span class="pre">$PYTHONPATH</span></code> will be implicitly configured correctly and you will never have to touch it.</p>
+<ul class="simple">
+<li><p><strong>Create the gospl environment and install packages</strong>. This is described in the next section.</p></li>
+</ul>
+</div>
+<div class="section" id="managing-environments-with-conda">
+<h3>Managing Environments with Conda<a class="headerlink" href="#managing-environments-with-conda" title="Permalink to this headline">¶</a></h3>
+<p>Python coupled with a package manager provides a way to make isolated, reproducible environments where you have fine-tuned control over all packages and configuration. <strong>You should always work within an environment</strong>, rather than the “default” environment.</p>
+<p>It is strongly recommended to read official <a class="reference external" href="https://conda.io/docs/user-guide/getting-started.html">Getting Started with Conda</a> guide.</p>
+<p>To create a conda environment, you execute the following command:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ conda create --name my_environment python=3.8 numpy
+</pre></div>
+</div>
+<p>This will create a special environment in <code class="docutils literal notranslate"><span class="pre">$MINICONDA_HOME/envs/my_environment</span></code> with only Python and numpy to begin with. Here, we’ve also told <code class="docutils literal notranslate"><span class="pre">conda</span></code> to install Python version 3.8; you can specify exact versions or minima, and <code class="docutils literal notranslate"><span class="pre">conda</span></code> will take care of figuring out all the compatibilties between versions for you. To use this environment, simply “activate” it by executing:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ conda activate my_environment
+</pre></div>
+</div>
+<p>Regardless of your shell, you should now see the string (<code class="docutils literal notranslate"><span class="pre">my_environment</span></code>) prepended to your prompt. Now, if you execute any Python-related tool from the command line, it will first search in <code class="docutils literal notranslate"><span class="pre">$MINICONDA_HOME/envs/my_environment/bin</span></code> to find them. You can deactivate your environment by typing:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ conda deactivate
+</pre></div>
+</div>
+<p>To see all the environments on your system:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ conda info --envs
+</pre></div>
+</div>
+<p>If you want to permanently remove an environment and delete all the data associated with it:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ conda remove --name my_environment --all
+</pre></div>
+</div>
+<p>For extensive documentation on using environments, please see the <a class="reference external" href="https://conda.io/docs/using/envs.html">conda documentation</a>. The most important feature to review here is the ability to <em>share</em> and <em>export</em> your environment; this is the basis for reproducibility in the scientific Python stack. At any time from the shell, you can execute</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ conda list
+</pre></div>
+</div>
+<p>to get a complete summary of all the packages installed in your environment, the channel they were installed from, and their full version info. Using this info, you can create an <strong>environment file</strong> in <a class="reference external" href="http://docs.ansible.com/ansible/latest/YAMLSyntax.html">YAML syntax</a> which documents the exact contents of your environment. With that file, a new environment with the exact configuration can be installed by executing</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ conda env create -f my_environment.yml
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="gospl-recipies-environment">
+<h2>gospl recipies environment<a class="headerlink" href="#gospl-recipies-environment" title="Permalink to this headline">¶</a></h2>
+<p>Combining all of the previous sections, we can very easily spin-up a full-featured scientific Python environment with a set of packages curated for the course. Copy and paste the following <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file somewhere on your local hard drive:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>name: stellar
+channels:
+  - conda-forge
+  - defaults
+  - anaconda
+dependencies:
+  - python=3.8    # Python version 3.8
+  - compilers
+  - llvm-openmp
+  - sphinx
+  - importlib_resources
+  - pip           # Python package
+  - pandas        # Labeled array library
+  - netCDF4       # Wrapper for netcdf4
+  - xarray        # N-d labeled array library
+  - matplotlib    # 2D plotting library
+  - numpy         # N-d array and numerics
+  - numpy-indexed # Numerics adds on
+  - scipy         # Common math/stats/science functions
+  - scikit-image  # Image processing routines
+  - scikit-learn  # Machine learning library
+  - scikit-fuzzy  # Fuzzy logic library
+  - geopandas     # Labeled array library for geosciences
+  - shapely       # Geometric library
+  - cftime        # Time units decoder
+  - cartopy       # Geographic plotting toolkit
+  - myst-nb       # Notebook syntax
+  - sympy         # Symbolic expression
+  - cmocean       # Colormaps for oceanography
+  - jupyterlab    # Jupyter Lab environment
+  - jupyter-book  # Jupyter book environment
+  - basemap       # Mapping package
+  - h5py          # Wrapper for HDF5
+  - pymannkendall # Mann-Kendall trend analysis
+  - seaborn       # Statistical visualizations
+  - pyresample    # Geographic resampling tools
+  - petsc4py
+  - meshio
+  - vtk
+  - pre-commit
+  - ruamel.yaml
+  - mpi4py
+  - cython
+  - pyvista
+  - pooch
+  - ipywidgets
+  - itkwidgets
+  - nodejs
+  - pyvista
+  - pyevtk
+  - panel
+  - gdown
+  - jigsawpy
+  - pysheds
+  - rioxarray
+  - rasterio
+  - ipygany
+  - fiona
+  - pycrs
+  - richdem
+  - holoviews
+  - geoviews
+  - hvplot
+  - panel
+  - wget
+  - pip:
+    - pyproj      # Geographic projections
+    - jupyter-book==0.10.1
+    - fastfunc
+    - meshplex
+    - gospl
+    - stripy
+    - zmapio
+</pre></div>
+</div>
+<p>(<strong>Note:</strong> Installing this environment will also install many dependencies, including compiled libraries. This is totally fine; even if you have these libraries already installed through your system package manager, <code class="docutils literal notranslate"><span class="pre">conda</span></code> will install and link for use in the environment a configuration which should be to play nicely and work with all of its components.)</p>
+<p>Create this environment through <code class="docutils literal notranslate"><span class="pre">conda</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ conda env create -f environment.yml
+</pre></div>
+</div>
+<p>Activate this environment</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ source activate envireef
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>This environment should be sufficient for all of the presented examples in this documentation.</p>
+</div>
+</div>
+<div class="section" id="installing-more-packages">
+<h2>Installing more packages<a class="headerlink" href="#installing-more-packages" title="Permalink to this headline">¶</a></h2>
+<p>Once you have a basic Python environment, you can easily add or remove packages using the <a class="reference external" href="https://conda.io/"><code class="docutils literal notranslate"><span class="pre">conda</span></code></a> command line utility. Conda was created to help manage the complex dependencies and pre-compiled binary libraries that are necessary in scientific python.</p>
+<p>If you set up your python environment using the Anaconda Python Distribution or with Miniconda, you should already have the <code class="docutils literal notranslate"><span class="pre">conda</span></code> command available on the command line. With it, you can easily install packages from an official, curated set of packages which are built and tested for a number of different system configurations on Linux, Windows, and macOS</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ conda install &lt;package-name&gt;
+</pre></div>
+</div>
+<p>Additionally, there is a community-maintained collection of packages/recipes called <a class="reference external" href="https://conda-forge.github.io/%3E">conda forge</a> which is accessible through conda as a special “channel”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ conda install -c conda-forge &lt;package-name&gt;
+</pre></div>
+</div>
+<p>While conda allows you to install almost any science-related package, there may be other general-use python packages you wish to you that are not available in via conda. For these, you can use an alternative installation method.</p>
+<p>Outside of the scientific python community, the most common way to install packages is to search for them on the official <a class="reference external" href="https://pypi.python.org/pypi">PyPI</a> index. Once you’ve found the package you want to install (you may have also just found it on github or elsewhere), you use the <code class="docutils literal notranslate"><span class="pre">pip</span></code> command from a the command line:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ pip install &lt;package-name&gt;
+</pre></div>
+</div>
+<p>This will fetch the source code, build it, and install it to wherever your <code class="docutils literal notranslate"><span class="pre">$PYTHONPATH</span></code> is set. This works in the vast majority of cases, particularly when the code you’re installing doesn’t have any compiled dependencies.</p>
+<p>If you can’t find a package on either PyPI or conda-forge, you can always install it directly from the source code. If the package is on github, <code class="docutils literal notranslate"><span class="pre">pip</span></code> already has an alias to do this for you:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ pip install git+https://github.com/&lt;user&gt;/&lt;package-name&gt;.git
+</pre></div>
+</div>
+<p>If all else fails, you can always download the source code and install it manually like</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ wget https:/path/to/my/pkg/source.tar.gz
+$ tar -xvzf source.tar.gz
+$ cd source/
+$ python setup.py install
+</pre></div>
+</div>
+<p>You can also use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install code you’ve downloaded:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ cd source/
+$ pip install -e .
+</pre></div>
+</div>
+<p>This will automatically call <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> for you. The “<strong>-e</strong>” flag will install the package in “editable” mode, which means that any change you make to the source code will automatically be recognised when you load the package in Python.</p>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
@@ -314,7 +581,7 @@
     <div class="container">
       <p>
         
-          By the EarthCoLab Group for the STELLAR Project - Program 3<br/>
+          By the <a href="https://earthcolab.org/#slide-0" target="_blank">EarthCodeLab Group</a> for the STELLAR Project - Program 3<br/>
         
             &copy; Copyright 2021-2024.<br/>
           <div class="extra_footer">
