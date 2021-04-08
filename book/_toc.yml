@@ -6,7 +6,7 @@
     - file: GoM/intro
     - file: GoM/build_input
     - file: GoM/run_model
+    - file: GoM/export_format
       sections:
-        - file: GoM/export_format
         - file: GoM/river_catchment
         - file: GoM/interactive_plots
