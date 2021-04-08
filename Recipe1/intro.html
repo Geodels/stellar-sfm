@@ -236,10 +236,29 @@
                 
   <div class="section" id="overview">
 <h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<div class="figure align-default" id="figure-example1">
-<img alt="../_images/example1.png" src="../_images/example1.png" />
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Running <code class="docutils literal notranslate"><span class="pre">gospl</span></code> for the Gulf of Mexico with today forcing conditions (<em>i.e.</em> topography and precipitation).</span><a class="headerlink" href="#figure-example1" title="Permalink to this image">¶</a></p>
+<div class="admonition-introduction admonition">
+<p class="admonition-title">Introduction</p>
+<p>This first recipe covers essential features of <code class="docutils literal notranslate"><span class="pre">gospl</span></code> in the form of interactive Jupyter notebooks and Python scripts. Over the course of this recipe, you will learn:</p>
+<ul class="simple">
+<li><p>data structure used in <code class="docutils literal notranslate"><span class="pre">gospl</span></code> input file,</p></li>
+<li><p>how to generate simple initial conditions like topography and precipitation to force a simulation,</p></li>
+<li><p>how to extract some of the outputs from the model to visualise them in Jupyter notebooks using multiple approaches/libraries,</p></li>
+<li><p>how to export <code class="docutils literal notranslate"><span class="pre">gospl</span></code> outputs (hdf5) in other common formats such as netcdf, geotiff, ZMap, and</p></li>
+<li><p>how to extract information relative to drainge basins and rivers longitudinal profiles.</p></li>
+</ul>
 </div>
+<p>The simulation proposed here uses data freely available from the web and will run <strong>without additional dataset</strong>. The dataset are imported in the jupyter notebooks from the following <code class="docutils literal notranslate"><span class="pre">THREDDS</span></code> servers:</p>
+<ol class="simple">
+<li><p>Topography file from NOAA <a class="reference external" href="http://ferret.pmel.noaa.gov/pmel/thredds/dodsC/data/PMEL/etopo5.nc.html">ETOPO5</a>,</p></li>
+<li><p>Precipitation file from  the <a class="reference external" href="https://psl.noaa.gov/thredds/dodsC/Datasets/cmap/enh/precip.mon.mean.nc.html">CPC collection</a>.</p></li>
+</ol>
+<p>In this example, we show how to use the global model to run a simulation for a particular continental-scale region here the Gulf of Mexico. This is done by building an unstructured spherical mesh with high resolution (approx. 25 km) around North America and a coarse (&gt;1000 km) elsewhere.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The recipe should take around 20/30 minutes to do on a single CPU (actually the simulation itself runs in less than 3 minutes but you will need time to understand how to build the input files and perform the provided post-processing analysis). Obviously, <code class="docutils literal notranslate"><span class="pre">gospl</span></code> can be ran at much higher resolution (&lt;10 km) globally but will take much more time!</p>
+</div>
+<p>The recipe is actually a coarser version of the following simulation which takes a bit longer to run but has been built using the exct same notebooks.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/example1.png"><img alt="recipe1" class="bg-primary mb-1 align-center" src="../_images/example1.png" style="width: 650px;" /></a>
 </div>
 
     <script type="text/x-thebe-config">
