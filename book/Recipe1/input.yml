@@ -15,8 +15,8 @@ time:
     tec: 10000.
 
 spl:
-    hfill: 10.
-    K: 3.0e-5
+    hfill: 200.
+    K: 1.0e-5
     Ff: 0.2
     d: 0.
 
@@ -27,7 +27,12 @@ diffusion:
     sedK: 250000.
 
 sea:
-    position: 0.
+    curve: 'gospl_data/sealevel.csv'
+
+tectonic:
+  - start: 0.
+    end: 50000.
+    mapV: 'gospl_data/tecto25km'
 
 climate:
   - start: 0.

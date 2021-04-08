@@ -53,7 +53,7 @@ latex:
 
 execute:
   execute_notebooks: auto
-  timeout: 300
+  timeout: 500
   allow_errors: true
 
 parse:

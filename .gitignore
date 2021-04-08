@@ -9,4 +9,4 @@ book/Recipe1/gospl_data
 book/Recipe1/script/__pycache__/
 book/Recipe1/script/.ipynb_checkpoints/
 book/Recipe1/export
-book/Recipe1/outGoM
+#book/Recipe1/outGoM

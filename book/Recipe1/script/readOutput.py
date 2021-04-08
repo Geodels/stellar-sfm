@@ -9,6 +9,7 @@ import numpy as np
 import pandas as pd
 from scipy import spatial
 import ruamel.yaml as yaml
+from scipy.interpolate import interp1d
 
 import cftime
 from datetime import datetime, timedelta
@@ -131,6 +132,78 @@ class readOutput:
 
         if self.path is not None:
             self.outputDir = self.path + self.outputDir
+
+        seafile = None
+        self.seacurve = False
+        self.sealevel = 0.0
+        try:
+            seaDict = self.input["sea"]
+            try:
+                self.sealevel = seaDict["position"]
+                try:
+                    seafile = seaDict["curve"]
+                except KeyError:
+                    seafile = None
+            except KeyError:
+                try:
+                    seafile = seaDict["curve"]
+                except KeyError:
+                    seafile = None
+        except KeyError:
+            self.sealevel = 0.0
+
+        if seafile is not None:
+            try:
+                with open(seafile) as fsea:
+                    fsea.close()
+                    try:
+                        seadata = pd.read_csv(
+                            seafile,
+                            sep=r",",
+                            engine="c",
+                            header=None,
+                            na_filter=False,
+                            dtype=np.float,
+                            low_memory=False,
+                        )
+
+                    except ValueError:
+                        try:
+                            seadata = pd.read_csv(
+                                seafile,
+                                sep=r"\s+",
+                                engine="c",
+                                header=None,
+                                na_filter=False,
+                                dtype=np.float,
+                                low_memory=False,
+                            )
+
+                        except ValueError:
+                            print(
+                                "The sea-level file is not well formed: it should be comma or tab separated",
+                                flush=True,
+                            )
+                            raise ValueError("Wrong formating of sea-level file.")
+            except IOError:
+                print("Unable to open file: ", seafile)
+                raise IOError("The sealevel file is not found...")
+
+            self.seacurve = True
+            seadata[1] += self.sealevel
+            if seadata[0].min() > self.tStart:
+                tmpS = []
+                tmpS.insert(0, {0: self.tStart, 1: seadata[1].iloc[0]})
+                seadata = pd.concat([pd.DataFrame(tmpS), seadata], ignore_index=True)
+            if seadata[0].max() < self.tEnd:
+                tmpE = []
+                tmpE.insert(0, {0: self.tEnd, 1: seadata[1].iloc[-1]})
+                seadata = pd.concat([seadata, pd.DataFrame(tmpE)], ignore_index=True)
+            self.seafunction = interp1d(
+                seadata[0], seadata[1], kind="linear"
+            )
+
+            self.time = np.arange(self.tStart, self.tEnd+0.1, self.tout)
 
         return
 
@@ -309,7 +382,7 @@ class readOutput:
 
         if self.nbCPUs == 0:
             self.nbCPUs = 1
-            
+
         for k in range(self.nbCPUs):
             df = h5py.File("%s/h5/topology.p%s.h5" % (self.outputDir, k), "r")
             coords = np.array((df["/coords"]))
@@ -324,6 +397,12 @@ class readOutput:
                 if self.lookuplift:
                     uplift = np.array((df2["/uplift"]))
                     hdisp = np.array((df2["/hdisp"]))
+
+            if self.seacurve is not None:
+                sealevel = self.seafunction(self.time[step])
+                elev -= sealevel
+            else:
+                elev -= self.sealevel
 
             if k == 0:
                 x, y, z = np.hsplit(coords, 3)
