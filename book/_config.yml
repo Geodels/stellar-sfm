@@ -1,10 +1,10 @@
 #######################################################################################
 # Book settings
-title : STELLAR SFM
+title : Surface Evolution & Stratigraphy Modelling  STELLAR Project
 # author: the EarthCodeLab Group for the STELLAR Project - Program 3
 author: the <a href="https://earthcolab.org/#slide-0" target="_blank">EarthCodeLab Group</a> for the STELLAR Project - Program 3
 copyright: "2021-2024"  # Copyright year to be placed in the footer
-logo: '_static/FA.png'
+logo: '' #'_static/FA.png'
 
 
 

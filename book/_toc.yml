@@ -1,12 +1,12 @@
 # - file: README
 - file: welcome
 
-- part: Example 1
+- part: Recipe 1
   chapters:
-    - file: GoM/intro
-    - file: GoM/build_input
-    - file: GoM/run_model
-    - file: GoM/export_format
+    - file: Recipe1/intro
+    - file: Recipe1/build_input
+    - file: Recipe1/run_model
+    - file: Recipe1/export_format
       sections:
-        - file: GoM/river_catchment
-        - file: GoM/interactive_plots
+        - file: Recipe1/river_catchment
+        - file: Recipe1/interactive_plots
