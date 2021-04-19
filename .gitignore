@@ -5,7 +5,7 @@ book/.ipynb_checkpoints/
 book/_build
 book/Recipe1/.ipynb_checkpoints
 book/Recipe1/input25km
-book/Recipe1/gospl_data
+#book/Recipe1/gospl_data
 book/Recipe1/script/__pycache__/
 book/Recipe1/script/.ipynb_checkpoints/
 book/Recipe1/export
