@@ -10,3 +10,7 @@
       sections:
         - file: Recipe1/river_catchment
         - file: Recipe1/interactive_plots
+
+- part: Recipe 2
+  chapters:
+    - file: Recipe2/intro
