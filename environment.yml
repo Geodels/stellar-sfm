@@ -68,6 +68,6 @@ dependencies:
     - jupyter-book==0.10.1
     - fastfunc
     - meshplex
-    - gospl==0.2.3
+    - gospl==0.2.4
     - stripy
     - zmapio
