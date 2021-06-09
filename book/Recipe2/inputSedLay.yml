@@ -1,0 +1,54 @@
+name: Gulf of Mexico model at 25 km resolution including multi-lithology stratigraphy
+
+domain:
+    npdata: 'gospl_data/mesh25km'
+    flowdir: 3
+    fast: False
+    backward: False
+    interp: 1
+    npstrata: 'gospl_data/sedlay25km'
+
+time:
+    start: 0.
+    end: 50000.
+    tout: 5000.
+    dt: 5000.
+    tec: 5000.
+    strat: 5000.
+
+spl:
+    hfill: 100.
+    K: 5.0e-5
+    Ff: 0.3
+    d: 0.
+
+diffusion:
+    hillslopeKa: 1.
+    hillslopeKm: 50.
+    sedK: 10000.
+    sedKf: 13000.
+    sedKw: 15000.
+
+sea:
+    curve: 'gospl_data/sealevel.csv'
+
+tectonic:
+  - start: 0.
+    end: 50000.
+    mapV: 'gospl_data/tecto25km'
+
+climate:
+  - start: 0.
+    map: ['gospl_data/rain25km','r']
+
+compaction:
+    phis: 0.49
+    phif: 0.63
+    phiw: 0.65
+    z0s: 3700.0
+    z0f: 1960.0
+    z0w: 1680.0
+
+output:
+    dir: 'GoMsedlay'
+    makedir: False
