@@ -10,7 +10,7 @@ domain:
 
 time:
     start: 0.
-    end: 50000.
+    end: 25000.
     tout: 5000.
     dt: 5000.
     tec: 5000.
