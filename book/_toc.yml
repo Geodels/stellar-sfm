@@ -15,3 +15,4 @@
   chapters:
     - file: Recipe2/intro
     - file: Recipe2/diffusion1D
+    - file: Recipe2/build_input
