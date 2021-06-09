@@ -17,4 +17,4 @@
     - file: Recipe2/diffusion1D
     - file: Recipe2/build_input
     - file: Recipe2/run_model
-    - file: Recipe2/strataview
+    - file: Recipe2/stratiview
