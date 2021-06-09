@@ -185,7 +185,7 @@ class stratal:
             self.wth = wth
             self.coarse = 1.0 - fine - wth
             self.coarse[self.coarse > 1.0] = 1.0
-            self.coarse[self.coarse < 1.0] = 0.0
+            self.coarse[self.coarse < 0.0] = 0.0
             self.phiS = phiS
             self.phiF = phiF
             self.phiW = phiW
