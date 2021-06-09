@@ -41,10 +41,11 @@ dependencies:
   - ruamel.yaml
   - mpi4py
   - cython
-  - pyvista
   - pooch
   - ipywidgets
   - itkwidgets
+  - ipyvtklink
+  - ipyevents
   - nodejs
   - pyvista
   - pyevtk
@@ -63,11 +64,12 @@ dependencies:
   - hvplot
   - panel
   - wget
+  - basemap-data-hires
   - pip:
     - pyproj      # Geographic projections
     - jupyter-book==0.10.1
     - fastfunc
     - meshplex
-    - gospl==0.2.4
+    - gospl==0.2.5
     - stripy
     - zmapio

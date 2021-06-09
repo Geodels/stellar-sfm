@@ -11,7 +11,7 @@ time:
     start: 0.
     end: 50000.
     tout: 10000.
-    dt: 2500.
+    dt: 5000.
     tec: 10000.
 
 spl:
@@ -21,10 +21,9 @@ spl:
     d: 0.
 
 diffusion:
-    shelfslope: True
     hillslopeKa: 1.
     hillslopeKm: 10.
-    sedK: 250000.
+    sedK: 10000.
 
 sea:
     curve: 'gospl_data/sealevel.csv'

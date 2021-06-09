@@ -14,3 +14,4 @@
 - part: Recipe 2
   chapters:
     - file: Recipe2/intro
+    - file: Recipe2/diffusion1D
