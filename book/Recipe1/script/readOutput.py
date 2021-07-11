@@ -30,8 +30,11 @@ import richdem as rd
 from gospl._fortran import ngbglob
 from gospl._fortran import filllabel
 
+
 class readOutput:
-    def __init__(self, path=None, filename=None, step=None, nbstep=None, back=False, uplift=True):
+    def __init__(
+        self, path=None, filename=None, step=None, nbstep=None, back=False, uplift=True
+    ):
 
         # Check input file exists
         self.path = path
@@ -79,7 +82,6 @@ class readOutput:
         self._readElevationData(step)
 
         return
-
 
     def _inputParser(self):
 
@@ -199,53 +201,51 @@ class readOutput:
                 tmpE = []
                 tmpE.insert(0, {0: self.tEnd, 1: seadata[1].iloc[-1]})
                 seadata = pd.concat([seadata, pd.DataFrame(tmpE)], ignore_index=True)
-            self.seafunction = interp1d(
-                seadata[0], seadata[1], kind="linear"
-            )
+            self.seafunction = interp1d(seadata[0], seadata[1], kind="linear")
 
-            self.time = np.arange(self.tStart, self.tEnd+0.1, self.tout)
+            self.time = np.arange(self.tStart, self.tEnd + 0.1, self.tout)
 
         return
 
-    def pit_fill(self,data):
+    def pit_fill(self, data):
 
         dem = np.copy(data)
         elev = np.copy(data)
 
         nrow, ncol = dem.shape
-        dem[:,:]=100000.0
-        dem[0,:]=elev[0,:]
-        dem[-1,:]=elev[-1,:]
-        dem[:,0]=elev[:,0]
-        dem[:,-1]=elev[:,-1]
+        dem[:, :] = 100000.0
+        dem[0, :] = elev[0, :]
+        dem[-1, :] = elev[-1, :]
+        dem[:, 0] = elev[:, 0]
+        dem[:, -1] = elev[:, -1]
         flag = True
 
         # Neighbours along x,y directions
-        direct8y=[1, 1, 1, 0, -1, -1, -1, 0]
-        direct8x=[-1, 0, 1, 1, 1, 0, -1, -1]
+        direct8y = [1, 1, 1, 0, -1, -1, -1, 0]
+        direct8x = [-1, 0, 1, 1, 1, 0, -1, -1]
 
         # Main loop
-        while flag==True:
-            flag=False
-            for i in range(1,nrow-1):
-                for j in range(1,ncol-1):
-                    if elev[i,j] <= 0.:
-                        dem[i,j] = elev[i,j]
-                    elif dem[i,j]>elev[i,j]:
-                        for p in range(0,8):
-                            r=i+direct8x[p]
-                            c=j+direct8y[p]
-                            if elev[i,j] >= dem[r,c]+0.01:
-                                dem[i,j]=elev[i,j]
-                                flag=True
+        while flag == True:
+            flag = False
+            for i in range(1, nrow - 1):
+                for j in range(1, ncol - 1):
+                    if elev[i, j] <= 0.0:
+                        dem[i, j] = elev[i, j]
+                    elif dem[i, j] > elev[i, j]:
+                        for p in range(0, 8):
+                            r = i + direct8x[p]
+                            c = j + direct8y[p]
+                            if elev[i, j] >= dem[r, c] + 0.01:
+                                dem[i, j] = elev[i, j]
+                                flag = True
                             else:
-                                if dem[i,j]>dem[r,c]+0.01:
-                                    dem[i,j]=dem[r,c]+0.01
-                                    flag=True
-        output_array=dem
+                                if dem[i, j] > dem[r, c] + 0.01:
+                                    dem[i, j] = dem[r, c] + 0.01
+                                    flag = True
+        output_array = dem
         return output_array
 
-    def flow_direction_d8(self,DX,DY,dem,fill_pits=False):
+    def flow_direction_d8(self, DX, DY, dem, fill_pits=False):
 
         if fill_pits:
             dem = self.pit_fill(dem)
@@ -253,93 +253,101 @@ class readOutput:
         nr = dem.shape[0]
         nc = dem.shape[1]
 
-        HYP = sqrt(DX*DX + DY*DY)
+        HYP = sqrt(DX * DX + DY * DY)
 
-        ghost = np.zeros((nr+2,nc+2),'d')
+        ghost = np.zeros((nr + 2, nc + 2), "d")
         slp = np.copy(ghost)
-        ghost[1:-1,1:-1] = dem[:,:]
-        ghost[0,1:-1]  = dem[0,:]
-        ghost[-1,1:-1] = dem[-1,:]
-        ghost[1:-1,0]  = dem[:,0]
-        ghost[1:-1,-1] = dem[:,-1]
-        ghost[0,0]=ghost[1,1]; ghost[-1,-1]=ghost[-2,-2];
-        ghost[0,-1]=ghost[1,-2]; ghost[-1,0]=ghost[-2,1]
+        ghost[1:-1, 1:-1] = dem[:, :]
+        ghost[0, 1:-1] = dem[0, :]
+        ghost[-1, 1:-1] = dem[-1, :]
+        ghost[1:-1, 0] = dem[:, 0]
+        ghost[1:-1, -1] = dem[:, -1]
+        ghost[0, 0] = ghost[1, 1]
+        ghost[-1, -1] = ghost[-2, -2]
+        ghost[0, -1] = ghost[1, -2]
+        ghost[-1, 0] = ghost[-2, 1]
 
-        neig_incr_row_major = np.array([1,-nc+1,-nc,-nc-1,-1,-1+nc,nc,nc+1])
-        neig_incr_col_major = np.array([nr,nr-1,-1,-nr-1,-nr,-nr+1,1,nr+1])
+        neig_incr_row_major = np.array(
+            [1, -nc + 1, -nc, -nc - 1, -1, -1 + nc, nc, nc + 1]
+        )
+        neig_incr_col_major = np.array(
+            [nr, nr - 1, -1, -nr - 1, -nr, -nr + 1, 1, nr + 1]
+        )
         neig_incr = neig_incr_col_major
 
-        slopes = np.zeros((8,),'d')
+        slopes = np.zeros((8,), "d")
 
-        all_indices = np.arange(nr*nc,dtype='i')
-        max_indices = np.zeros(nr*nc,'i')
-        slope_vals  = np.zeros(nr*nc,'d')
-        slope_count = np.zeros(nr*nc,'i')
+        all_indices = np.arange(nr * nc, dtype="i")
+        max_indices = np.zeros(nr * nc, "i")
+        slope_vals = np.zeros(nr * nc, "d")
+        slope_count = np.zeros(nr * nc, "i")
 
-        for i in range(1,nr+1):
-            for j in range(1,nc+1):
-                slopes[0] = (ghost[i,j]-ghost[i,j+1])/DX
-                slopes[4] = (ghost[i,j]-ghost[i,j-1])/DX
-                slopes[1] = (ghost[i,j]-ghost[i-1,j+1])/HYP
-                slopes[2] = (ghost[i,j]-ghost[i-1,j])/DY
-                slopes[3] = (ghost[i,j]-ghost[i-1,j-1])/HYP
-                slopes[5] = (ghost[i,j]-ghost[i+1,j-1])/HYP
-                slopes[6] = (ghost[i,j]-ghost[i+1,j])/DY
-                slopes[7] = (ghost[i,j]-ghost[i+1,j+1])/HYP
-                glob_ind = (j-1)*nr + i-1 #local cell col major
-                loc_max  = slopes.argmax()
+        for i in range(1, nr + 1):
+            for j in range(1, nc + 1):
+                slopes[0] = (ghost[i, j] - ghost[i, j + 1]) / DX
+                slopes[4] = (ghost[i, j] - ghost[i, j - 1]) / DX
+                slopes[1] = (ghost[i, j] - ghost[i - 1, j + 1]) / HYP
+                slopes[2] = (ghost[i, j] - ghost[i - 1, j]) / DY
+                slopes[3] = (ghost[i, j] - ghost[i - 1, j - 1]) / HYP
+                slopes[5] = (ghost[i, j] - ghost[i + 1, j - 1]) / HYP
+                slopes[6] = (ghost[i, j] - ghost[i + 1, j]) / DY
+                slopes[7] = (ghost[i, j] - ghost[i + 1, j + 1]) / HYP
+                glob_ind = (j - 1) * nr + i - 1  # local cell col major
+                loc_max = slopes.argmax()
                 if slopes[loc_max] > 0:
-                    glob_max = min(max(glob_ind + neig_incr[loc_max],0),nc*nr-1)
+                    glob_max = min(max(glob_ind + neig_incr[loc_max], 0), nc * nr - 1)
                     max_indices[glob_ind] = glob_max
-                    slope_vals[glob_ind]  = slopes[loc_max]
+                    slope_vals[glob_ind] = slopes[loc_max]
                     slope_count[glob_ind] = 1
-                    slp[i,j] =  slope_vals[glob_ind]
-        M = sp.csr_matrix((slope_count,(all_indices,max_indices)),shape=(nr*nc,nr*nc))
+                    slp[i, j] = slope_vals[glob_ind]
+        M = sp.csr_matrix(
+            (slope_count, (all_indices, max_indices)), shape=(nr * nc, nr * nc)
+        )
 
-        return M, slp[1:-1,1:-1]
+        return M, slp[1:-1, 1:-1]
 
-    def flowAccum(self,M,shape):
+    def flowAccum(self, M, shape):
 
         nc = M.shape[1]
-        I = sp.eye(M.shape[0],M.shape[1])
-        B = I-M.transpose()
-        b = np.ones(nc,'d')
+        I = sp.eye(M.shape[0], M.shape[1])
+        B = I - M.transpose()
+        b = np.ones(nc, "d")
 
-        fa = splg.spsolve(B,b)
-        fa = fa.reshape(shape,order='F')
+        fa = splg.spsolve(B, b)
+        fa = fa.reshape(shape, order="F")
 
         return fa
 
-    def drainageBasins(self,M,dsh):
+    def drainageBasins(self, M, dsh):
 
-        ntot = dsh[0]*dsh[1]
+        ntot = dsh[0] * dsh[1]
         assert M.shape[0] == ntot and M.shape[1] == ntot
 
         # Find cells that receive water only
-        routes   = M.sum(axis=1)  # 1 if cell routes flow to another cell, 0 otherwise
+        routes = M.sum(axis=1)  # 1 if cell routes flow to another cell, 0 otherwise
         receives = M.sum(axis=0)  # number of neighbors that flow to each cell
 
         # Cells that don't route flow but also receive it
-        index = np.logical_and(routes.flat == 0,receives.flat != 0)
-        drains = np.zeros(ntot,'d')
+        index = np.logical_and(routes.flat == 0, receives.flat != 0)
+        drains = np.zeros(ntot, "d")
         drains[index] = 1
 
         # Grab cells that are drainage outlets
         outlets = np.where(drains == 1)
-        drains = np.cumsum(drains)*drains
+        drains = np.cumsum(drains) * drains
 
         # Solve flow to drains
-        I = sp.eye(ntot,ntot)
-        A = I-M
-        X = splg.spsolve(A,drains)
+        I = sp.eye(ntot, ntot)
+        A = I - M
+        X = splg.spsolve(A, drains)
         index_orph = np.logical_and(routes.flat == 0, receives.flat == 0)
         X[index_orph] = -1
         index_orph = np.logical_not(index_orph)
-        x,iix = np.unique(X[index_orph],return_inverse=True)
+        x, iix = np.unique(X[index_orph], return_inverse=True)
         X[index_orph] = iix
-        X = X.reshape(dsh,order='F')
+        X = X.reshape(dsh, order="F")
 
-        return X,outlets
+        return X, outlets
 
     def lonlat2xyz(self, lon, lat, radius=6378137.0):
 
@@ -371,8 +379,8 @@ class readOutput:
 
         # Convert spherical mesh longitudes and latitudes to degrees
         self.lonlat = np.empty((len(self.vertices[:, 0]), 2))
-        self.lonlat[:, 0] = np.mod(np.degrees(lons) + 180.0, 360.0)-180.
-        self.lonlat[:, 1] = np.mod(np.degrees(lats) + 90, 180.0)-90.
+        self.lonlat[:, 0] = np.mod(np.degrees(lons) + 180.0, 360.0) - 180.0
+        self.lonlat[:, 1] = np.mod(np.degrees(lats) + 90, 180.0) - 90.0
 
         self.tree = spatial.cKDTree(self.lonlat, leafsize=10)
 
@@ -393,7 +401,7 @@ class readOutput:
             if not self.back:
                 erodep = np.array((df2["/erodep"]))
                 sedLoad = np.array((df2["/sedLoad"]))
-                flowAcc = np.array((df2["/fillAcc"]))
+                flowAcc = np.array((df2["/flowAcc"]))
                 if self.lookuplift:
                     uplift = np.array((df2["/uplift"]))
                     hdisp = np.array((df2["/hdisp"]))
@@ -472,12 +480,12 @@ class readOutput:
                 self.erodep = np.sum(weights * nerodep[indices][:, :], axis=1) / np.sum(
                     weights, axis=1
                 )
-                self.sedLoad = np.sum(weights * nsedLoad[indices][:, :], axis=1) / np.sum(
-                    weights, axis=1
-                )
-                self.flowAcc = np.sum(weights * nflowAcc[indices][:, :], axis=1) / np.sum(
-                    weights, axis=1
-                )
+                self.sedLoad = np.sum(
+                    weights * nsedLoad[indices][:, :], axis=1
+                ) / np.sum(weights, axis=1)
+                self.flowAcc = np.sum(
+                    weights * nflowAcc[indices][:, :], axis=1
+                ) / np.sum(weights, axis=1)
                 if self.lookuplift:
                     self.hdisp = np.sum(
                         weights * nhdisp[indices][:, :], axis=1
@@ -529,13 +537,21 @@ class readOutput:
                 del weights, nelev, nrain, distances, indices, ncoords
                 del nerodep, nhdisp, nuplift, nsedLoad, nflowAcc
             else:
-                del weights, nelev, nrain, distances, indices, ncoords, nsedLoad, nflowAcc
+                del (
+                    weights,
+                    nelev,
+                    nrain,
+                    distances,
+                    indices,
+                    ncoords,
+                    nsedLoad,
+                    nflowAcc,
+                )
         else:
             del weights, nelev, nrain, distances, indices, ncoords
 
         gc.collect()
         return
-
 
     def exportVTK(self, vtkfile, globNgh=True, sl=0.0):
 
@@ -544,15 +560,19 @@ class readOutput:
 
         self.hFill, self.labels = filllabel(sl, self.elev)
 
-        vis_mesh = meshio.Mesh(self.vertices, {"triangle": self.cells},
-                               point_data={"elev": self.elev,
-                                          "erodep":self.erodep,
-                                          "rain":self.rain,
-                                          "FA":np.ma.log(self.flowAcc).filled(0),
-                                          "SL":self.sedLoad,
-                                          "fill":self.hFill-self.elev,
-                                          "basin":self.labels,
-                                          })
+        vis_mesh = meshio.Mesh(
+            self.vertices,
+            {"triangle": self.cells},
+            point_data={
+                "elev": self.elev,
+                "erodep": self.erodep,
+                "rain": self.rain,
+                "FA": np.ma.log(self.flowAcc).filled(0),
+                "SL": self.sedLoad,
+                "fill": self.hFill - self.elev,
+                "basin": self.labels,
+            },
+        )
         meshio.write(vtkfile, vis_mesh)
         print("Writing VTK file {}".format(vtkfile))
 
@@ -565,101 +585,141 @@ class readOutput:
         except OSError:
             pass
 
-        ds = nc.Dataset(ncfile, 'w', format='NETCDF4')
-        ds.description = 'gospl outputs'
+        ds = nc.Dataset(ncfile, "w", format="NETCDF4")
+        ds.description = "gospl outputs"
         ds.history = "Created " + time.ctime(time.time())
 
         if self.nbstep is not None:
-            dtime = ds.createDimension('time', None)
+            dtime = ds.createDimension("time", None)
 
-        dlat = ds.createDimension('latitude', len(self.lat[:,0]))
-        dlon = ds.createDimension('longitude', len(self.lon[0,:]))
-
-
-        if self.nbstep is not None:
-            times = ds.createVariable('time','f8',('time',))
-            times.units = 'days since 0000-01-01'
-            times.calendar = '365_day'
-            times[:] = date2num([cftime.num2date(self.tout*i*365, units='days since 0000-01-01',
-                                                 calendar='365_day') for i in range(self.nbstep)],
-                                units=times.units,calendar=times.calendar)/365.+self.tStart
-
-        lats = ds.createVariable('latitude', 'f8', ('latitude',))
-        lats.units = 'degrees_north'
-        lats[:] = self.lat[:,0]
-
-        lons = ds.createVariable('longitude', 'f8', ('longitude',))
-        lons.units = 'degrees_east'
-        lons[:] = self.lon[0,:]
+        dlat = ds.createDimension("latitude", len(self.lat[:, 0]))
+        dlon = ds.createDimension("longitude", len(self.lon[0, :]))
 
         if self.nbstep is not None:
-            elev = ds.createVariable('elevation', 'f8', ('time', 'latitude', 'longitude'), zlib=True)
-            elev.units = 'metres'
-            elev[:,:,:] = self.datafelev
+            times = ds.createVariable("time", "f8", ("time",))
+            times.units = "days since 0000-01-01"
+            times.calendar = "365_day"
+            times[:] = (
+                date2num(
+                    [
+                        cftime.num2date(
+                            self.tout * i * 365,
+                            units="days since 0000-01-01",
+                            calendar="365_day",
+                        )
+                        for i in range(self.nbstep)
+                    ],
+                    units=times.units,
+                    calendar=times.calendar,
+                )
+                / 365.0
+                + self.tStart
+            )
+
+        lats = ds.createVariable("latitude", "f8", ("latitude",))
+        lats.units = "degrees_north"
+        lats[:] = self.lat[:, 0]
+
+        lons = ds.createVariable("longitude", "f8", ("longitude",))
+        lons.units = "degrees_east"
+        lons[:] = self.lon[0, :]
+
+        if self.nbstep is not None:
+            elev = ds.createVariable(
+                "elevation", "f8", ("time", "latitude", "longitude"), zlib=True
+            )
+            elev.units = "metres"
+            elev[:, :, :] = self.datafelev
         else:
-            elev = ds.createVariable('elevation', 'f8', ('latitude', 'longitude'), zlib=True)
-            elev.units = 'metres'
-            elev[:,:] = self.datafelev
+            elev = ds.createVariable(
+                "elevation", "f8", ("latitude", "longitude"), zlib=True
+            )
+            elev.units = "metres"
+            elev[:, :] = self.datafelev
 
         if self.nbstep is not None:
-            erodep = ds.createVariable('erodep', 'f8', ('time', 'latitude', 'longitude'), zlib=True)
-            erodep.units = 'metres'
-            erodep[:,:,:] = self.datafEroDep
+            erodep = ds.createVariable(
+                "erodep", "f8", ("time", "latitude", "longitude"), zlib=True
+            )
+            erodep.units = "metres"
+            erodep[:, :, :] = self.datafEroDep
         else:
-            erodep = ds.createVariable('erodep', 'f8', ('latitude', 'longitude'), zlib=True)
-            erodep.units = 'metres'
-            erodep[:,:] = self.datafEroDep
+            erodep = ds.createVariable(
+                "erodep", "f8", ("latitude", "longitude"), zlib=True
+            )
+            erodep.units = "metres"
+            erodep[:, :] = self.datafEroDep
 
         if self.nbstep is not None:
-            rain = ds.createVariable('precipitation', 'f8', ('time', 'latitude', 'longitude'), zlib=True)
-            rain.units = 'm/yr'
-            rain[:,:,:] = self.datafRain
+            rain = ds.createVariable(
+                "precipitation", "f8", ("time", "latitude", "longitude"), zlib=True
+            )
+            rain.units = "m/yr"
+            rain[:, :, :] = self.datafRain
         else:
-            rain = ds.createVariable('precipitation', 'f8', ('latitude', 'longitude'), zlib=True)
-            rain.units = 'm/yr'
-            rain[:,:] = self.datafRain
+            rain = ds.createVariable(
+                "precipitation", "f8", ("latitude", "longitude"), zlib=True
+            )
+            rain.units = "m/yr"
+            rain[:, :] = self.datafRain
 
         if self.nbstep is not None:
-            fla = ds.createVariable('drainageArea', 'f8', ('time', 'latitude', 'longitude'), zlib=True)
-            fla.units = 'm2'
-            fla[:,:,:] = self.datafA
+            fla = ds.createVariable(
+                "drainageArea", "f8", ("time", "latitude", "longitude"), zlib=True
+            )
+            fla.units = "m2"
+            fla[:, :, :] = self.datafA
         else:
-            fla = ds.createVariable('drainageArea', 'f8', ('latitude', 'longitude'), zlib=True)
-            fla.units = 'm2'
-            fla[:,:] = self.datafA
+            fla = ds.createVariable(
+                "drainageArea", "f8", ("latitude", "longitude"), zlib=True
+            )
+            fla.units = "m2"
+            fla[:, :] = self.datafA
 
-#         fsl = ds.createVariable('sedimentLoad', 'f8', ('time', 'latitude', 'longitude'), zlib=True)
-#         fsl.units = 'm3/yr'
-#         fsl[:,:,:] = self.datafSed
+        #         fsl = ds.createVariable('sedimentLoad', 'f8', ('time', 'latitude', 'longitude'), zlib=True)
+        #         fsl.units = 'm3/yr'
+        #         fsl[:,:,:] = self.datafSed
 
         if self.lookuplift:
 
             if self.nbstep is not None:
-                fh = ds.createVariable('hdisp', 'f4', ('time', 'latitude', 'longitude'), zlib=True)
-                fh.units = 'm/yr'
-                fh[:,:,:] = self.datafhdisp
+                fh = ds.createVariable(
+                    "hdisp", "f4", ("time", "latitude", "longitude"), zlib=True
+                )
+                fh.units = "m/yr"
+                fh[:, :, :] = self.datafhdisp
             else:
-                fh = ds.createVariable('hdisp', 'f4', ('latitude', 'longitude'), zlib=True)
-                fh.units = 'm/yr'
-                fh[:,:] = self.datafhdisp
+                fh = ds.createVariable(
+                    "hdisp", "f4", ("latitude", "longitude"), zlib=True
+                )
+                fh.units = "m/yr"
+                fh[:, :] = self.datafhdisp
 
             if self.nbstep is not None:
-                fu = ds.createVariable('uplift', 'f4', ('time', 'latitude', 'longitude'), zlib=True)
-                fu.units = 'm/yr'
-                fu[:,:,:] = self.datafUp
+                fu = ds.createVariable(
+                    "uplift", "f4", ("time", "latitude", "longitude"), zlib=True
+                )
+                fu.units = "m/yr"
+                fu[:, :, :] = self.datafUp
             else:
-                fu = ds.createVariable('uplift', 'f4', ('latitude', 'longitude'), zlib=True)
-                fu.units = 'm/yr'
-                fu[:,:] = self.datafUp
+                fu = ds.createVariable(
+                    "uplift", "f4", ("latitude", "longitude"), zlib=True
+                )
+                fu.units = "m/yr"
+                fu[:, :] = self.datafUp
 
         if self.nbstep is not None:
-            fl = ds.createVariable('basinID', 'i4', ('time', 'latitude', 'longitude'), zlib=True)
-            fl.units = 'int'
-            fl[:,:,:] = self.datafBasin
+            fl = ds.createVariable(
+                "basinID", "i4", ("time", "latitude", "longitude"), zlib=True
+            )
+            fl.units = "int"
+            fl[:, :, :] = self.datafBasin
         else:
-            fl = ds.createVariable('basinID', 'i4', ('latitude', 'longitude'), zlib=True)
-            fl.units = 'int'
-            fl[:,:] = self.datafBasin
+            fl = ds.createVariable(
+                "basinID", "i4", ("latitude", "longitude"), zlib=True
+            )
+            fl.units = "int"
+            fl[:, :] = self.datafBasin
 
         ds.close()
 
@@ -682,21 +742,20 @@ class readOutput:
                 self.lon = np.linspace(-180.0, 180.0, self.nx)
                 self.lat = np.linspace(-90.0, 90.0, self.ny)
             else:
-                self.nx = int((box[2]-box[0]) / res) + 1
-                self.ny = int((box[3]-box[1]) / res) + 1
+                self.nx = int((box[2] - box[0]) / res) + 1
+                self.ny = int((box[3] - box[1]) / res) + 1
                 self.lon = np.linspace(box[0], box[2], self.nx)
                 self.lat = np.linspace(box[1], box[3], self.ny)
-
 
             self.lon, self.lat = np.meshgrid(self.lon, self.lat)
             self.xyi = np.dstack([self.lon.flatten(), self.lat.flatten()])[0]
 
         distances, indices = self.tree.query(self.xyi, k=nghb)
         onIDs = np.where(distances[:, 0] == 0)[0]
-        distances[onIDs,:] = 0.001
+        distances[onIDs, :] = 0.001
         weights = 1.0 / distances ** 2
         denum = 1.0 / np.sum(weights, axis=1)
-        denum[onIDs] = 0.
+        denum[onIDs] = 0.0
 
         zi = np.sum(weights * self.elev[indices], axis=1) * denum
         raini = np.sum(weights * self.rain[indices], axis=1) * denum
@@ -722,25 +781,31 @@ class readOutput:
 
         if not self.back:
             th = np.reshape(erodepi, (self.ny, self.nx))
-#             sl = np.reshape(sedLoadi, (self.ny, self.nx))
+            #             sl = np.reshape(sedLoadi, (self.ny, self.nx))
             if self.lookuplift:
                 vdisp = np.reshape(uplifti, (self.ny, self.nx))
                 hdisp = np.reshape(hdispi, (self.ny, self.nx))
 
             elev = z.copy()
-            elev[elev<0.] = -9999
+            elev[elev < 0.0] = -9999
 
             class metadata:
                 no_data = -9999
                 projection = "+init=epsg:4326"
-                geotransform = (res, 0.0, self.lon.min()-0.5*res,
-                                0.0, -res, self.lat.max()+0.5*res)
+                geotransform = (
+                    res,
+                    0.0,
+                    self.lon.min() - 0.5 * res,
+                    0.0,
+                    -res,
+                    self.lat.max() + 0.5 * res,
+                )
 
             dem = rd.rdarray(elev, meta_obj=metadata, no_data=-9999)
             rd.FillDepressions(dem, epsilon=True, in_place=True)
             M, slp = self.flow_direction_d8(res, res, dem, fill_pits=False)
             FlAc = self.flowAccum(M, (self.ny, self.nx))
-            DB,outlets = self.drainageBasins(M, (self.ny, self.nx))
+            DB, outlets = self.drainageBasins(M, (self.ny, self.nx))
             DB[z < 0] = -1
             FlAc[z < 0] = 0.0001
             FlAc = np.ma.log(FlAc)
@@ -752,7 +817,7 @@ class readOutput:
             if not self.back:
                 self.datafA = np.zeros((self.nbstep, self.ny, self.nx))
                 self.datafRain = np.zeros((self.nbstep, self.ny, self.nx))
-#                 self.datafSed = np.zeros((self.nbstep, self.ny, self.nx))
+                #                 self.datafSed = np.zeros((self.nbstep, self.ny, self.nx))
                 if self.lookuplift:
                     self.datafUp = np.zeros((self.nbstep, self.ny, self.nx))
                     self.datafhdisp = np.zeros((self.nbstep, self.ny, self.nx))
@@ -765,7 +830,7 @@ class readOutput:
 
             if not self.back:
                 self.datafEroDep[self.step, :, :] = th
-    #             self.datafSed[self.step, :, :] = sl
+                #             self.datafSed[self.step, :, :] = sl
                 self.datafA[self.step, :, :] = FlAc
                 self.datafBasin[self.step, :, :] = DB
 
@@ -779,7 +844,7 @@ class readOutput:
 
             if not self.back:
                 self.datafEroDep = th
-    #             self.datafSed = sl
+                #             self.datafSed = sl
                 self.datafA = FlAc
                 self.datafBasin = DB
 
@@ -804,11 +869,10 @@ class readOutput:
                     FlAc,
                     DB,
                     vdisp,
-                    hdisp
+                    hdisp,
                 )
             else:
-                del (weights, denum, onIDs, raini, zi,
-                     z, th, FlAc, DB, sedLoadi)
+                del (weights, denum, onIDs, raini, zi, z, th, FlAc, DB, sedLoadi)
         else:
             del (weights, denum, onIDs, raini, zi, z)
         gc.collect()
