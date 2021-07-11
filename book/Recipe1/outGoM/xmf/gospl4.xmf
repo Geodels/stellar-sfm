@@ -20,7 +20,7 @@
          <Attribute Type="Scalar" Center="Node" Name="FA">
           <DataItem Format="HDF" NumberType="Float" Precision="4" Dimensions="124253 1">h5/gospl.4.p0.h5:/flowAcc</DataItem>
          </Attribute>
-         <Attribute Type="Scalar" Center="Node" Name="fillFA">
+         <Attribute Type="Scalar" Center="Node" Name="lake">
           <DataItem Format="HDF" NumberType="Float" Precision="4" Dimensions="124253 1">h5/gospl.4.p0.h5:/fillAcc</DataItem>
          </Attribute>
          <Attribute Type="Scalar" Center="Node" Name="SL">

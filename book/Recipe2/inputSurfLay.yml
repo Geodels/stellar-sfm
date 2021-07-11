@@ -17,17 +17,18 @@ time:
     strat: 5000.
 
 spl:
-    hfill: 100.
+    wfill: 100.
+    sfill: 10.
     K: 1.0e-5
-    Ff: 0.3
     d: 0.
 
 diffusion:
     hillslopeKa: 1.
     hillslopeKm: 50.
-    sedK: 10000.
-    sedKf: 10000.
-    sedKw: 15000.
+    dstep: 5
+    sedK: 1000.
+    sedKf: 1000.
+    sedKw: 1500.
 
 sea:
     curve: 'gospl_data/sealevel.csv'
