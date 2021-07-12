@@ -68,8 +68,7 @@ dependencies:
   - pip:
     - pyproj      # Geographic projections
     - jupyter-book==0.10.1
-    - fastfunc
     - meshplex
-    - gospl==0.2.7
+    - gospl
     - stripy
     - zmapio
