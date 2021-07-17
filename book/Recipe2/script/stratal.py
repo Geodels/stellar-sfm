@@ -514,7 +514,8 @@ class stratal:
             hscale = 110000.0
         else:
             hscale = 1.0
-
+        xmax = -1.0e12
+        ymax = -1.0e12
         for k in range(self.curLay - 1, -1, -1):
             th = gaussian_filter(self.thi[k, :, :], sigma)
             th[th < 0] = 0.0
@@ -525,6 +526,8 @@ class stratal:
                 for i in range(lons[1] - lons[0]):
                     x[i, j, k] = (lon[i + lons[0]] - lon[lons[0]]) * hscale
                     y[i, j, k] = (lat[j + lats[0]] - lat[lats[0]]) * hscale
+                    xmax = max(xmax, x[i, j, k])
+                    ymax = max(ymax, y[i, j, k])
                     if k == self.curLay - 1:
                         z[i, j, k] = zz[j, i]
                     else:
@@ -567,4 +570,4 @@ class stratal:
                 pointData={"dep elev": e, "th": h, "layID": t, "poro": ps},
             )
 
-        return
+        return [xmax, ymax]
