@@ -26,6 +26,7 @@ diffusion:
     hillslopeKa: 1.
     hillslopeKm: 50.
     dstep: 5
+    mstep: 5
     sedK: 1000.
     sedKf: 1000.
     sedKw: 1500.
