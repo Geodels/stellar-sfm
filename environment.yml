@@ -65,10 +65,13 @@ dependencies:
   - panel
   - wget
   - basemap-data-hires
+  - gmsh
+  - python-gmsh
   - pip:
     - pyproj      # Geographic projections
     - jupyter-book==0.10.1
     - meshplex
+    - optimesh
     - gospl==0.2.9
     - stripy
     - zmapio
