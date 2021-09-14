@@ -27,8 +27,8 @@ from matplotlib import cm
 
 import richdem as rd
 
-from gospl._fortran import ngbglob
-from gospl._fortran import filllabel
+# from gospl._fortran import ngbglob
+# from gospl._fortran import filllabel
 
 
 class readOutput:
@@ -553,12 +553,12 @@ class readOutput:
         gc.collect()
         return
 
-    def exportVTK(self, vtkfile, globNgh=True, sl=0.0):
+    def exportVTK(self, vtkfile, sl=0.0):
 
-        if globNgh:
-            ngbglob(len(self.vertices), self.ngbID)
-
-        self.hFill, self.labels = filllabel(sl, self.elev)
+        # if globNgh:
+        #     ngbglob(len(self.vertices), self.ngbID)
+        #
+        # self.hFill, self.labels = filllabel(sl, self.elev)
 
         vis_mesh = meshio.Mesh(
             self.vertices,
@@ -569,8 +569,8 @@ class readOutput:
                 "rain": self.rain,
                 "FA": np.ma.log(self.flowAcc).filled(0),
                 "SL": self.sedLoad,
-                "fill": self.hFill - self.elev,
-                "basin": self.labels,
+                # "fill": self.hFill - self.elev,
+                # "basin": self.labels,
             },
         )
         meshio.write(vtkfile, vis_mesh)
