@@ -406,7 +406,7 @@ class readOutput:
                     uplift = np.array((df2["/uplift"]))
                     hdisp = np.array((df2["/hdisp"]))
 
-            if self.seacurve is not None:
+            if self.seacurve:
                 sealevel = self.seafunction(self.time[step])
                 elev -= sealevel
             else:
